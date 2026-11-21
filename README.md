@@ -16,4 +16,4 @@ Zasady:
 - Podtytuł to „obywatelski radar dezinformacji”. Materiały ze starszym podtytułem („…oraz scamu”) i z przepływem zgłoszeń, kampanii i ataku botów nie idą do jury.
 - Wideo commitujemy przez Git LFS (`git lfs install` raz na komputer). Pliki PPTX i PDF zwykłym gitem.
 
-Gałęzie: zmiany przez PR do `develop`, wydanie przez PR `develop` → `main`. Repo nie ma CI ani wdrożenia, bo nie ma kodu.
+Gałąź: tylko `main`, zmiany przez PR do `main`. Repo nie ma CI ani wdrożenia, bo nie ma kodu.
