@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Meritum: dodatek do decku</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,650&family=Azeret+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<style>
+/* Meritum deck for the MSZ „Prawdowid” jury: 12 slides at 1920x1080, theme „Atrament”
+   (design-system DESIGN_SYSTEM.md 3-5, tokens/meritum.css): one white surface, ink, cool greys,
+   no accent; the verdict badges are the only colour. Sections are separated by space, not by rules or cards.
+   build.py renders every <section class="slide"> to PNG, PDF and PPTX; <aside> holds the speaker notes. */
+:root{
+  --bg:#FFFFFF; --ink:#0A0A0A; --ink2:#5A5D62; --muted:#F3F4F6; --raised:#EEF0F2; --line:#E3E5E8; --wire:#858A93;
+  --ok:#E4F4EC; --ok-d:#0A6240; --mis:#F8EEDB; --mis-d:#7A4E08; --bad:#FBE6E9; --bad-d:#9E1A2E;
+  --sans:"Schibsted Grotesk",Arial,sans-serif; --mono:"Azeret Mono",ui-monospace,monospace; --logo:"Archivo",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:1920px 1080px;margin:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1920px;height:1080px;background:var(--bg);padding:96px 112px;overflow:hidden;break-after:page}
+aside{display:none}
+
+/* type */
+h1,h2{font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:104px;line-height:1.02}
+h2{font-size:64px;line-height:1.08;max-width:1500px}
+h3{font-size:26px;font-weight:700;line-height:1.3}
+.lead{font-size:30px;line-height:1.4;color:var(--ink2);margin-top:28px;max-width:900px;text-wrap:pretty}
+p,li,td,dd{font-size:26px;line-height:1.4}
+.mono{font-family:var(--mono);letter-spacing:-.02em}
+.muted{color:var(--ink2)}
+.note{position:absolute;left:112px;bottom:104px;font-size:20px;line-height:1.4;color:var(--ink2);max-width:1100px}
+
+/* footer: the mark and the Archivo word left, page number right, photo credit between */
+.foot{position:absolute;left:112px;right:112px;bottom:40px;display:flex;align-items:center;gap:12px;font-size:20px;color:var(--ink2)}
+.foot .mark{width:30px;height:30px;color:var(--ink)}
+.word{font-family:var(--logo);font-weight:650;font-stretch:112%;letter-spacing:-.02em;color:var(--ink)}
+.foot .word{font-size:24px}
+.foot .credit{margin-left:28px}
+.foot .n{margin-left:auto;font-variant-numeric:tabular-nums}
+
+/* icons: Lucide, 2px stroke, ink, always beside text */
+.ic{width:30px;height:30px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.br{width:28px;height:28px;flex:none;display:block}
+
+/* the product's sign: a hanging Polish opening quote */
+.q{position:relative;padding-left:.62em}
+.q::before{content:"„";position:absolute;left:0;top:0}
+
+/* verdict badges: word and colour together */
+.badge{display:inline-block;padding:5px 18px;border-radius:999px;font-size:23px;font-weight:600;white-space:nowrap;line-height:1.35}
+.b-ok{background:var(--ok);color:var(--ok-d)} .b-mis{background:var(--mis);color:var(--mis-d)}
+.b-bad{background:var(--bad);color:var(--bad-d)} .b-neu{background:var(--raised);color:var(--ink2)}
+
+/* strength: three level bars, ink */
+.bars{display:inline-flex;gap:4px;align-items:flex-end;margin-right:12px}
+.bars i{display:block;width:7px;border-radius:2px;background:var(--line)}
+.bars i:nth-child(1){height:11px}.bars i:nth-child(2){height:16px}.bars i:nth-child(3){height:21px}
+.bars[data-l="1"] i:nth-child(-n+1),.bars[data-l="2"] i:nth-child(-n+2),.bars[data-l="3"] i{background:var(--ink)}
+
+/* rows: icon, statement, one line of detail; separated by space only */
+.rows{list-style:none;display:grid;row-gap:36px}
+.rows li{display:grid;grid-template-columns:30px 1fr;column-gap:22px}
+.rows .ic,.rows .br{grid-row:span 2;margin-top:4px}
+.rows b{font-weight:650}
+.rows span{color:var(--ink2);font-size:23px;line-height:1.4;margin-top:4px}
+
+/* screenshots of the UI prototype: a window cut out of a 1440 px wide capture */
+.crop{background-repeat:no-repeat;background-color:#fff;border:1px solid var(--line);border-radius:12px}
+.fade{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+.photo{position:absolute;top:0;height:1080px;object-fit:cover;display:block}
+
+/* diagrams: quiet grey nodes, one ink node for our own code, thin grey wires */
+.node{position:absolute;display:flex;align-items:center;gap:14px;padding:0 18px;background:var(--muted);border-radius:8px;font-size:21px;font-weight:600;line-height:1.2}
+.node small{display:block;font-size:17px;font-weight:400;color:var(--ink2);margin-top:3px}
+.node.ink{background:var(--ink);color:#fff}
+.node.ink small{color:#C9CCD1}
+.node.ink .br{filter:invert(1)}
+.wires{position:absolute;inset:0;overflow:visible}
+.wires path{fill:none;stroke:var(--wire);stroke-width:2}
+.wires text{font-family:var(--sans);font-size:17px;fill:var(--ink2)}
+
+/* 1 title */
+.lockup{display:flex;align-items:center;gap:16px}
+.lockup .mark{width:56px;height:56px}
+.lockup .word{font-size:48px;line-height:1}
+.lockup + p{font-size:22px;color:var(--ink2);margin-top:10px}
+.s1 h1{margin-top:150px;max-width:900px}
+.s1 .lead{max-width:800px}
+.s1 .crop{position:absolute;left:1128px;top:120px;width:680px;height:800px;border:0;border-radius:0;background-image:url(assets/ui-home.png);background-size:1800px auto;background-position:-925px -131px}
+
+/* 2 problem */
+.s2{padding-left:872px}
+.s2 .photo{left:0;width:760px;object-position:55% 50%}
+.s2 .rumour{font-size:60px;line-height:1.14;font-weight:700;letter-spacing:-.02em;margin:80px 0 64px}
+.s2 .note{max-width:900px}
+.s2 .foot,.s2 .note{left:872px}
+
+/* 3 users */
+.s3 h2{max-width:1150px}
+.s3 .cols{display:grid;grid-template-columns:540px 540px;gap:96px;margin-top:88px}
+.who{display:flex;align-items:center;gap:16px;font-size:36px;font-weight:700;letter-spacing:-.01em}
+.who .ic{width:36px;height:36px}
+.who + p{font-size:26px;color:var(--ink2);margin:12px 0 48px}
+.s4 .phone{position:absolute;left:1470px;top:96px;width:338px;height:731px;border-radius:30px;background-image:url(assets/ui-form-mobile.png);background-size:338px auto}
+.s4 h2{max-width:1250px}
+
+/* 4 channels */
+.chs{margin-top:56px;display:grid;grid-template-columns:28px 250px 440px 440px;column-gap:32px;row-gap:24px;align-items:start}
+.chs p{font-size:23px;line-height:1.4}
+.chs b{font-size:26px;font-weight:650;line-height:1.3}
+.chs b small{display:block;font-weight:400;font-size:20px;color:var(--ink2)}
+.chs .th{font-size:20px;color:var(--ink2)}
+.chs .ic,.chs .br{margin-top:3px}
+
+/* 5 pipeline */
+.s5 .dia{position:relative;height:340px;margin-top:64px}
+.s5 .node{height:76px;width:176px;padding:0 16px;font-size:20px}
+.s5 .lower{display:grid;grid-template-columns:660px 1fr;gap:110px;margin-top:56px}
+.verdicts{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.verdicts + p{font-size:23px;color:var(--ink2);margin-top:20px}
+.rule{display:grid;grid-template-columns:230px 1fr;row-gap:18px;margin-top:20px}
+.rule dt{font-size:24px;font-weight:650;display:flex;align-items:center}
+.rule dd{font-size:23px;line-height:1.4;color:var(--ink2)}
+
+/* 6 demo */
+.s6 .pair{display:grid;grid-template-columns:800px 800px;justify-content:space-between;margin-top:64px}
+.s6 .p1{height:246px;background-image:url(assets/ui-progress.png);background-size:1536px auto;background-position:-160px -100px}
+.s6 .p2{height:690px;background-image:url(assets/ui-false.png);background-size:1536px auto;background-position:-160px -100px}
+.s6 .rows{margin-top:64px}
+
+/* 7 honest uncertainty */
+.s7 .grid{display:grid;grid-template-columns:1000px 1fr;gap:88px;margin-top:88px;align-items:start}
+.s7 .crop{height:560px;background-image:url(assets/ui-abstain.png);background-size:1920px auto;background-position:-196px -112px}
+
+/* 8 prompt injection */
+.s8 .flow{display:grid;grid-template-columns:1fr 1fr;gap:110px;margin-top:96px}
+.s8 h3{font-size:22px;font-weight:600;color:var(--ink2);margin-bottom:16px}
+.paste{font-size:34px;line-height:1.4;font-weight:600}
+.cut{background:var(--raised);color:var(--ink2);text-decoration:line-through;text-decoration-thickness:2px;border-radius:6px;padding:0 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.out p{font-size:34px;font-weight:600;line-height:1.4;margin-top:16px}
+.out small{display:block;font-size:23px;color:var(--ink2);margin-top:12px;line-height:1.4}
+.log{display:inline-block;margin-top:80px;padding:14px 22px;background:var(--muted);border-radius:8px;font-family:var(--mono);font-size:20px}
+.s8 .rows{grid-template-columns:1fr 1fr;column-gap:110px;margin-top:80px}
+
+/* 9 sources */
+.s9{padding-left:872px}
+.s9 .photo{left:0;width:760px}
+.s9 .rows{margin-top:64px}
+.entry{display:grid;grid-template-columns:190px 1fr;row-gap:12px;column-gap:24px;margin-top:64px}
+.entry dt{font-size:21px;color:var(--ink2);padding-top:3px}
+.entry dd{font-size:23px;line-height:1.4}
+.s9 .foot,.s9 .note{left:872px}
+
+/* 10 architecture */
+.s10 .dia{position:relative;height:500px;margin-top:64px}
+.s10 .node{height:72px}
+.s10 .node b{font-family:var(--mono);font-weight:500;font-size:19px;letter-spacing:-.02em}
+.host{position:absolute;left:560px;top:-16px;width:772px;height:508px;border:1px solid var(--line);border-radius:12px}
+.host span{position:absolute;left:20px;bottom:14px;font-size:17px;color:var(--ink2);display:flex;align-items:center;gap:10px}
+.host .br{width:22px;height:22px}
+.s10 .bottom{position:absolute;left:112px;bottom:92px;font-size:22px;color:var(--ink2);line-height:1.4}
+
+/* 11 results */
+.metrics{width:100%;border-collapse:collapse;margin-top:64px}
+.metrics th{font-size:20px;font-weight:600;color:var(--ink2);text-align:left;padding:0 0 12px}
+.metrics td{padding:17px 0;vertical-align:middle}
+.metrics td small{display:block;font-size:21px;color:var(--ink2);margin-top:2px}
+.metrics .tgt{font-size:30px;font-weight:600;width:330px}
+.metrics .res{width:420px}
+.pending{display:inline-block;background:var(--muted);border-radius:999px;padding:6px 18px;font-size:21px;color:var(--ink2)}
+.s11 .note{max-width:1500px}
+
+/* 12 risks and next step */
+.s12{padding-right:760px}
+.s12 h2{max-width:1000px}
+.s12 .photo{right:0;width:640px}
+.next{margin-top:52px;display:flex;gap:20px;align-items:flex-start}
+.next p{font-size:25px;line-height:1.4}
+.close{margin-top:44px;font-size:36px;font-weight:700;letter-spacing:-.02em;line-height:1.2;text-wrap:balance}
+.s12 .foot{right:760px}
+
+/* plain sentences where an icon row said nothing an icon could add */
+.plain{font-size:28px;line-height:1.45;max-width:880px;margin-top:28px;text-wrap:pretty}
+.plain.wide{max-width:1500px;margin-top:56px;color:var(--ink2)}
+.s2 .plain{margin-top:32px}
+
+/* link to the workbook or the full diagram: a button in HTML, a legible address in print */
+.xl{position:absolute;right:112px;bottom:92px;display:block;padding:14px 22px 15px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-size:21px;font-weight:600;line-height:1.3}
+.xl span{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.xl .mono{font-weight:400;font-size:17px;color:#C9CCD1;margin-top:3px}
+.xl .ic{width:22px;height:22px}
+.res .note,.cost .note,.scale .note,.s10 .bottom{max-width:1010px}
+.res .note,.cost .note,.scale .note{bottom:92px}
+
+/* demo: two result pages side by side */
+.demo h2{max-width:1600px}
+.demo .lead{max-width:1500px;margin-top:20px}
+.demo .pair{display:grid;grid-template-columns:800px 800px;justify-content:space-between;margin-top:44px}
+.demo .p2{height:400px;background-image:url(assets/ui-false.png);background-size:1536px auto;background-position:-160px -100px}
+.demo .p3{height:400px;background-image:url(assets/ui-abstain.png);background-size:1536px auto;background-position:-157px -90px}
+.demo .under{margin-top:20px}
+.demo .under p{font-size:23px;line-height:1.4;color:var(--ink2)}
+
+/* results, costs, scaling: one table each, rows separated by space */
+.res .lead,.cost .lead{max-width:1696px;margin-top:20px;font-size:24px}
+.res .metrics{margin-top:32px}
+.res .metrics td{padding:8px 0}
+.metrics .val{font-size:40px !important;font-weight:700;letter-spacing:-.02em;width:190px}
+.metrics .st{font-size:22px;color:var(--ink2);font-weight:400}
+.metrics b.st{color:var(--ink);font-weight:650}
+.metrics .runs{font-size:19px;color:var(--ink2);width:250px;white-space:nowrap}
+.metrics .st{width:360px}
+.res td:first-child{width:680px}
+.res .metrics td{font-size:24px}
+.res .metrics td small{font-size:19px}
+.res .tgt{width:210px}
+.metrics .num{text-align:right;padding-right:56px;white-space:nowrap}
+.metrics th.num{padding-right:56px}
+.metrics .lvl{font-size:30px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;padding-right:40px}
+.cost .metrics{margin-top:36px}
+.cost .metrics td:last-child,.cost .metrics th:last-child{padding-left:28px}
+.cost .plain.wide{margin-top:32px;font-size:25px;max-width:1696px}
+.cost .metrics td{padding:9px 0}
+.cost .metrics td.num{font-size:30px;font-weight:600}
+.share{display:flex;gap:2px;width:560px;height:18px}
+.share i{display:block;border-radius:3px;min-width:4px}
+.h{background:#858A93}.m{background:var(--ink)}.g{background:#D5D8DC}
+.sharelab{display:flex;gap:2px;width:560px;font-size:18px;color:var(--ink2);margin-top:5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sharelab span:last-child{text-align:right}
+.key{display:inline-flex;align-items:center;gap:8px;margin-right:24px}
+.key i{display:block;width:14px;height:14px;border-radius:3px}
+.scale h2{max-width:1650px}
+.scale .metrics{margin-top:56px}
+.scale .metrics td{font-size:23px;line-height:1.35;padding:15px 28px 15px 0;vertical-align:top}
+.scale .metrics td:last-child{padding-right:0}
+.scale .metrics td.lvl{font-size:28px}
+.scale .metrics td:nth-child(3){width:330px}.scale .metrics td:nth-child(4){width:430px}
+.scale .metrics td.num{font-size:26px;font-weight:600;padding-right:40px}
+.scale .metrics .why{color:var(--ink2)}
+.scale .metrics th{padding-right:28px;white-space:nowrap}
+
+/* risks: two columns of text, no tiles */
+.risks{border-collapse:collapse;margin-top:48px}
+.risks td{font-size:24px;line-height:1.4;padding:10px 0;vertical-align:top}
+.risks td:first-child{font-weight:650;width:270px}
+.risks td:last-child{color:var(--ink2)}
+
+/* Appendix: what did not fit into the 12 jury slides. Same tokens as index.html; build.py renders it to dodatek.pdf. */
+.ap{padding:40px 64px}
+.ap h2{font-size:38px;max-width:none}
+.ap .lead{font-size:22px;margin-top:8px;max-width:none}
+.ap .foot{left:64px;right:64px;bottom:28px}
+.c4{position:absolute;inset:0}
+.nd{position:absolute;border-radius:8px;padding:12px 16px;font-size:20px;line-height:1.25}
+.nd b{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:650}
+.nd small{display:block;font-size:15.5px;line-height:1.32;margin-top:4px;color:var(--ink2)}
+.nd .lg{display:flex;gap:8px;align-items:center}
+.nd .br,.nd .ic{width:20px;height:20px}
+.nd.own{background:var(--ink);color:#fff} .nd.own small{color:#C9CCD1} .nd.own .br{filter:invert(1)}
+.nd.ext{background:var(--muted)}
+.nd.per{background:var(--muted);border-radius:35px;padding-left:26px}
+.nd.plan{border:2px dashed var(--wire);background:#fff}
+.bound{position:absolute;left:650px;top:100px;width:752px;height:756px;border:1px solid var(--line);border-radius:12px}
+.bound span{position:absolute;left:24px;bottom:14px;font-size:16px;color:var(--ink2)}
+.c4 .wires text{font-size:15px}
+.wires .pl{stroke-dasharray:6 6}
+.lgd{position:absolute;left:64px;top:984px;display:flex;gap:28px;align-items:center;font-size:16px;color:var(--ink2)}
+.lgd span{display:flex;align-items:center;gap:8px}
+.lgd i{display:block;width:26px;height:16px;border-radius:4px}
+.ap .metrics td{font-size:24px;padding:14px 0}
+.ap .metrics td.lvl{width:110px}
+.ap .metrics th.num{text-align:right}
+.ap .metrics td.tm{width:110px;color:var(--ink2)}
+.ap .metrics .num:last-child{padding-right:0}
+.ap .note{left:64px;bottom:84px;max-width:1700px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="mark" viewBox="0 0 48 48"><path d="M10 40V25c0-5.5 3.1-9 7-9s7 3.5 7 9v15M24 25c0-5.5 3.1-9 7-9s7 3.5 7 9v15M24 25v15" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="7.6" r="3.5" fill="currentColor"/></symbol>
+<symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol><symbol id="i-rss" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></symbol>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#858A93"/></marker>
+</svg>
+
+<!-- D1: container diagram -->
+<section class="slide ap" id="architektura">
+  <h2>Kontenery Meritum i usługi zewnętrzne, stan na 22.11.2026</h2>
+  <div class="c4">
+    <div class="bound"><span>serwer zespołu dellpromaxgb10 (dziś), docelowo GCP europe-central2 (Terraform gotowy)</span></div>
+    <svg class="wires" viewBox="0 0 1920 1080">
+<path d="M344 178H388" marker-end="url(#arr)"/><text x="346" y="122">HTTPS</text>
+<path d="M344 370H366V178M344 470H366M344 570H366V470"/>
+<path d="M500 226V260" marker-end="url(#arr)"/>
+<path d="M610 310H640V165H672" marker-end="url(#arr)"/>
+<path d="M640 165V116H1211V128" marker-end="url(#arr)"/>
+<path d="M640 310V335H672" marker-end="url(#arr)"/><text x="614" y="384" text-anchor="end">/api, /mcp</text>
+<path d="M800 210V248" marker-end="url(#arr)"/><text x="812" y="236">/api</text>
+<path d="M1211 210V230H930V248" marker-end="url(#arr)"/>
+<path d="M1014 290H1044" marker-end="url(#arr)"/>
+<path d="M1046 390H1016" marker-end="url(#arr)"/>
+<path d="M1376 390H1448" marker-end="url(#arr)"/><text x="1384" y="380">Gateway</text>
+<path d="M1014 340H1420V185H1448" marker-end="url(#arr)"/>
+<path d="M800 430V458" marker-end="url(#arr)"/><text x="812" y="450">zleca przez kolejkę DBOS</text>
+<path d="M800 640V678" marker-end="url(#arr)"/>
+<path d="M674 400H660V728H672" marker-end="url(#arr)"/>
+<path class="pl" d="M1014 498H1044" marker-end="url(#arr)"/>
+<path d="M1046 600H1016" marker-end="url(#arr)"/>
+<path d="M1014 548H1420V505H1448" marker-end="url(#arr)"/>
+<path d="M1420 548V750H1448" marker-end="url(#arr)"/><path d="M1420 630H1448" marker-end="url(#arr)"/>
+</svg>
+        <div class="nd per" style="left:64px;top:130px;width:280px;height:96px;"><b>Obywatel, jury, personel<span class="lg"><svg class="ic"><use href="#i-user-round"/></svg></span></b><small>przeglądarka</small></div>
+    <div class="nd ext" style="left:64px;top:330px;width:280px;height:80px;"><b>Wtyczka Chrome<span class="lg"><img class="br" src="assets/brands/googlechrome.svg" alt=""><img class="br" src="assets/brands/wxt.svg" alt=""></span></b><small>WXT, Manifest V3</small></div>
+    <div class="nd ext" style="left:64px;top:430px;width:280px;height:80px;"><b>Klient MCP<span class="lg"><img class="br" src="assets/brands/modelcontextprotocol.svg" alt=""></span></b><small>aplikacja czatu AI</small></div>
+    <div class="nd ext" style="left:64px;top:530px;width:280px;height:80px;"><b>Bramka SMS<span class="lg"><svg class="ic"><use href="#i-smartphone"/></svg></span></b><small>sms-gate.app, Android</small></div>
+    <div class="nd ext" style="left:390px;top:130px;width:220px;height:96px;"><b>Cloudflare Tunnel<span class="lg"><img class="br" src="assets/brands/cloudflare.svg" alt=""></span></b><small>TLS, ochrona przed DDoS</small></div>
+    <div class="nd own" style="left:390px;top:262px;width:220px;height:96px;"><b>meritum-gateway<span class="lg"><img class="br" src="assets/brands/nginx.svg" alt=""></span></b><small>nginx, routing po hoście</small></div>
+    <div class="nd own" style="left:674px;top:130px;width:340px;height:80px;"><b>Strona WWW<span class="lg"><img class="br" src="assets/brands/react.svg" alt=""><img class="br" src="assets/brands/reactquery.svg" alt=""><img class="br" src="assets/brands/nginx.svg" alt=""></span></b><small>React, TanStack, nginx</small></div>
+    <div class="nd own" style="left:1046px;top:130px;width:330px;height:80px;"><b>Makiety<span class="lg"><img class="br" src="assets/brands/hono.svg" alt=""></span></b><small>Hono: pięć platform i makieta Discorda</small></div>
+    <div class="nd own" style="left:674px;top:250px;width:340px;height:180px;"><b>API<span class="lg"><img class="br" src="assets/brands/fastapi.svg" alt=""><img class="br" src="assets/brands/python.svg" alt=""></span></b><small>FastAPI: sprawdzenia, nagrania, obrazy, archiwa stron, postęp przez SSE, eskalacje, moderacja, eksport, logowanie OIDC. Kanały: web, Discord, SMS, MCP. Limity ruchu i maskowanie danych osobowych.</small></div>
+    <div class="nd own" style="left:1046px;top:250px;width:330px;height:80px;"><b>Magazyn plików</b><small>BlobStore: wolumen, docelowo GCS</small></div>
+    <div class="nd own" style="left:1046px;top:350px;width:330px;height:80px;"><b>Bot Discord<span class="lg"><img class="br" src="assets/brands/discord.svg" alt=""></span></b><small>osobny proces API, połączenie Gateway</small></div>
+    <div class="nd own" style="left:674px;top:460px;width:340px;height:180px;"><b>Worker<span class="lg"><img class="br" src="assets/brands/python.svg" alt=""><img class="br" src="assets/brands/pydantic.svg" alt=""></span></b><small>Workflowy DBOS: check, escalate_claim, recheck_claim, delete_subject, retention, readiness, eval_run, archive_page, corpus_ingest, corpus_snapshot, euvsdisinfo_sync i 7 innych.</small></div>
+    <div class="nd plan" style="left:1046px;top:460px;width:330px;height:76px;"><b>Crawl4AI</b><small>planowany, dla stron z JavaScriptem</small></div>
+    <div class="nd own" style="left:1046px;top:560px;width:330px;height:80px;"><b>Ewaluacja<span class="lg"><img class="br" src="assets/brands/pydantic.svg" alt=""></span></b><small>pydantic-evals, polecenie meritum-eval</small></div>
+    <div class="nd own" style="left:674px;top:680px;width:702px;height:96px;"><b>PostgreSQL 18<span class="lg"><img class="br" src="assets/brands/postgresql.svg" alt=""></span></b><small>pgvector, polskie wyszukiwanie pełnotekstowe, kolejki DBOS. Schematy app_dev, app_prd i corpus.</small></div>
+    <div class="nd ext" style="left:1450px;top:130px;width:406px;height:110px;"><b>Logowanie i powiadomienia<span class="lg"><img class="br" src="assets/brands/google.svg" alt=""><img class="br" src="assets/brands/cloudflare.svg" alt=""><img class="br" src="assets/brands/googlechat.svg" alt=""></span></b><small>OIDC Google i Microsoft, Cloudflare Email Worker, webhook, Google Chat</small></div>
+    <div class="nd ext" style="left:1450px;top:350px;width:406px;height:80px;"><b>Discord<span class="lg"><img class="br" src="assets/brands/discord.svg" alt=""></span></b><small>serwery i wiadomości prywatne</small></div>
+    <div class="nd ext" style="left:1450px;top:450px;width:406px;height:110px;"><b>Google Cloud w UE<span class="lg"><img class="br" src="assets/brands/googlecloud.svg" alt=""></span></b><small>Sensitive Data Protection, Speech-to-Text v2 (Chirp 3), Cloud Vision, Vertex AI Search</small></div>
+    <div class="nd ext" style="left:1450px;top:580px;width:406px;height:100px;"><b>Modele językowe<span class="lg"><img class="br" src="assets/brands/openrouter.svg" alt=""><img class="br" src="assets/brands/claude.svg" alt=""><img class="br" src="assets/brands/googlegemini.svg" alt=""></span></b><small>OpenRouter: Claude Haiku 5.5. Vertex AI: embeddingi Gemini.</small></div>
+    <div class="nd ext" style="left:1450px;top:700px;width:406px;height:100px;"><b>Źródła i API<span class="lg"><img class="br" src="assets/brands/google.svg" alt=""><svg class="ic"><use href="#i-rss"/></svg></span></b><small>57 źródeł z katalogu (RSS, mapy stron, API Sejmu), Fact Check Tools API, EUvsDisinfo</small></div>
+    <div class="nd ext" style="left:64px;top:880px;width:560px;height:84px;"><b>CI/CD<span class="lg"><img class="br" src="assets/brands/githubactions.svg" alt=""><img class="br" src="assets/brands/docker.svg" alt=""></span></b><small>GitHub Actions, runnery w GCP; develop wdraża dev, main prd</small></div>
+    <div class="nd ext" style="left:656px;top:880px;width:560px;height:84px;"><b>Dokumentacja<span class="lg"><img class="br" src="assets/brands/github.svg" alt=""></span></b><small>meritum-docs: architektura, ADR-y, kontrakty, słownik</small></div>
+    <div class="nd ext" style="left:1248px;top:880px;width:608px;height:84px;"><b>Koszt i skalowanie<span class="lg"><img class="br" src="assets/brands/terraform.svg" alt=""><img class="br" src="assets/brands/googlecloud.svg" alt=""></span></b><small>arkusz meritum-koszty-i-wyniki.xlsx, Terraform dla GCP</small></div>
+    <div class="lgd">
+      <span><i style="border-radius:8px;background:var(--muted)"></i>osoba</span>
+      <span><i style="background:var(--ink)"></i>kontener w kodzie</span>
+      <span><i style="border:2px dashed var(--wire)"></i>kontener planowany</span>
+      <span><i style="background:var(--muted)"></i>system zewnętrzny i otoczenie</span>
+      <span><svg width="34" height="10"><path d="M0 5H32" stroke="#858A93" stroke-width="2" marker-end="url(#arr)"/></svg>połączenie</span>
+      <span><svg width="34" height="10"><path d="M0 5H32" stroke="#858A93" stroke-width="2" stroke-dasharray="6 6"/></svg>połączenie planowane</span>
+    </div>
+  </div>
+  <div class="foot"><svg class="mark"><use href="#mark"/></svg><span class="word">meritum</span><span class="credit">Dodatek poza 12 slajdami dla jury</span><span class="n">D1 / 3</span></div>
+</section>
+
+<!-- D2: every committed benchmark run -->
+<section class="slide ap res">
+  <h2>Siedem przebiegów benchmarku z 22.11.2026</h2>
+  <p class="lead">64 twierdzenia przez API dev, Claude Haiku 5.5, 4 sprawdzenia naraz. Godziny w UTC. Źródło: raporty w meritum-worker, evals/reports.</p>
+  <table class="metrics" style="margin-top:44px">
+    <tr><th>Przebieg</th><th>Start</th><th>Co zmieniliśmy przed nim</th><th class="num">Macro-F1</th><th class="num">ściśle</th><th class="num">Pokrycie cytatami</th><th class="num">Poprawność cytatów</th><th class="num">Wstrzymanie</th><th class="num">Mediana</th><th class="num">Błędy techniczne</th></tr>
+    <tr><td class="lvl">0</td><td class="tm">03:08</td><td class="why">bazowy</td><td class="num">0,46</td><td class="num">–</td><td class="num">100%</td><td class="num">45%</td><td class="num">86%</td><td class="num">39 s</td><td class="num">10</td></tr>
+<tr><td class="lvl">1</td><td class="tm">03:47</td><td class="why">katalog i reguły ocen</td><td class="num">0,54</td><td class="num">–</td><td class="num">93%</td><td class="num">43%</td><td class="num">100%</td><td class="num">47 s</td><td class="num">11</td></tr>
+<tr><td class="lvl">2</td><td class="tm">04:27</td><td class="why">fragmenty stron bliskie pytaniu</td><td class="num">0,61</td><td class="num">–</td><td class="num">97%</td><td class="num">51%</td><td class="num">100%</td><td class="num">53 s</td><td class="num">5</td></tr>
+<tr><td class="lvl">3</td><td class="tm">05:00</td><td class="why">z migawką korpusu</td><td class="num">0,73</td><td class="num">–</td><td class="num">94%</td><td class="num">60%</td><td class="num">100%</td><td class="num">53 s</td><td class="num">0</td></tr>
+<tr><td class="lvl">5</td><td class="tm">05:48</td><td class="why">twierdzenie bez daty, poprawka odpowiedzi</td><td class="num">0,82</td><td class="num">0,62</td><td class="num">88%</td><td class="num">58%</td><td class="num">100%</td><td class="num">51 s</td><td class="num">0</td></tr>
+<tr><td class="lvl">7</td><td class="tm">07:08</td><td class="why">dopasowanie ocen, ostrzejsze cytaty</td><td class="num">0,81</td><td class="num">0,64</td><td class="num">88%</td><td class="num">84%</td><td class="num">100%</td><td class="num">53 s</td><td class="num">0</td></tr>
+<tr><td class="lvl">7b</td><td class="tm">07:24</td><td class="why">powtórzenie przebiegu 7</td><td class="num">0,82</td><td class="num">0,65</td><td class="num">90%</td><td class="num">83%</td><td class="num">100%</td><td class="num">50 s</td><td class="num">0</td></tr>
+
+  </table>
+  <p class="note">Przebiegi 4 i 6b mają wyniki tylko w notatkach (bez pliku raportu), a przebieg 6 jest nieważny, bo w jego trakcie wdrożyło się API. Macro-F1 liczone ściśle podają dopiero notatki do przebiegów 5, 7 i 7b. Dwa pełne przebiegi tego samego kodu różnią się nawet o 3 twierdzenia, więc różnica między 7 a 7b to szum.</p>
+  <div class="foot"><svg class="mark"><use href="#mark"/></svg><span class="word">meritum</span><span class="credit">Dodatek poza 12 slajdami dla jury</span><span class="n">D2 / 3</span></div>
+</section>
+
+<!-- D3: forecast -->
+<section class="slide ap cost">
+  <h2>Prognoza kosztu na 24 miesiące w trzech scenariuszach</h2>
+  <p class="lead">Start od 1000 sprawdzeń miesięcznie i stały wzrost miesiąc do miesiąca. Tempo wzrostu to założenie, żadnego z nich nie zmierzyliśmy.</p>
+  <table class="metrics" style="margin-top:44px">
+    <tr><th>Scenariusz</th><th class="num">Wzrost miesięczny</th><th class="num">Sprawdzeń po 12 mies.</th><th class="num">Koszt w 12. miesiącu</th><th class="num">Sprawdzeń po 24 mies.</th><th class="num">Koszt w 24. miesiącu</th><th class="num">Razem przez 24 mies.</th></tr>
+    <tr><td class="lvl">Ostrożny</td><td class="num">15%</td><td class="num">4 652</td><td class="num">121 USD</td><td class="num">24 891</td><td class="num">427 USD</td><td class="num">4 497 USD</td></tr>
+    <tr><td class="lvl">Bazowy</td><td class="num">30%</td><td class="num">17 922</td><td class="num">368 USD</td><td class="num">417 539</td><td class="num">4 612 USD</td><td class="num">24 443 USD</td></tr>
+    <tr><td class="lvl">Szybki</td><td class="num">50%</td><td class="num">86 498</td><td class="num">949 USD</td><td class="num">10 mln (sufit)</td><td class="num">93 106 USD</td><td class="num">333 185 USD</td></tr>
+  </table>
+  <p class="note">Koszt miesiąca to model, wyszukiwarka i bramki dla sprawdzeń poza pamięcią wyników plus serwery poziomu, w którym mieści się ruch. Wszystkie wzory i założenia: arkusz „Prognoza” w meritum-static.gburek.app/meritum-koszty-i-wyniki.xlsx.</p>
+  <div class="foot"><svg class="mark"><use href="#mark"/></svg><span class="word">meritum</span><span class="credit">Dodatek poza 12 slajdami dla jury</span><span class="n">D3 / 3</span></div>
+</section>
+</body>
+</html>

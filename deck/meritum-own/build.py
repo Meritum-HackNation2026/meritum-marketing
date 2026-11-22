@@ -1,4 +1,4 @@
-"""Renders index.html to slides/slide-NN.png, meritum-own.pdf and meritum-own.pptx (headless Chrome).
+"""Renders index.html to slides/slide-NN.png, meritum-own.pdf and meritum-own.pptx, and dodatek.html to dodatek.pdf.
 
   uv run --with playwright --with python-pptx python deck/meritum-own/build.py
 
@@ -35,6 +35,13 @@ def render() -> list[str]:
             s.screenshot(path=out / f"slide-{i + 1:02d}.png")
             notes.append(s.locator("aside").inner_text().strip())
         page.pdf(path=str(HERE / "meritum-own.pdf"), width=f"{W}px", height=f"{H}px", print_background=True)
+        # the appendix is outside the 12-slide limit: its own PDF and previews
+        page.goto((HERE / "dodatek.html").as_uri(), wait_until="networkidle")
+        page.evaluate("document.fonts.ready")
+        extra = page.locator("section.slide")
+        for i in range(extra.count()):
+            extra.nth(i).screenshot(path=out / f"dodatek-{i + 1:02d}.png")
+        page.pdf(path=str(HERE / "dodatek.pdf"), width=f"{W}px", height=f"{H}px", print_background=True)
         browser.close()
     return notes
 
