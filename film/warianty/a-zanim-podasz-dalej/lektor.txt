@@ -1,0 +1,10 @@
+# Tekst lektora, jedna kwestia w wierszu. Kolejność wierszy to numery kwestii w src/timeline.ts.
+Dostajesz to codziennie.
+Podać dalej?
+Meritum sprawdza takie wiadomości w źródłach.
+Każde twierdzenie dostaje werdykt, z cytatem i ze źródłem.
+A drugie zdanie z tej samej wiadomości się zgadza.
+Kiedy źródeł brakuje, Meritum mówi wprost: nie wiemy, więc nie zgadujemy.
+Na stronie, na Discordzie i we wtyczce wynik jest ten sam.
+Sprawdź, zanim podasz dalej.
+Meritum. Obywatelski radar dezinformacji.

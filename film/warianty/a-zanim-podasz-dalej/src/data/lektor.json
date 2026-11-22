@@ -1,0 +1,409 @@
+{
+ "voice": "Xb7hH8MSUJpSbSDYk0k2",
+ "model": "eleven_multilingual_v2",
+ "lines": [
+  "Dostajesz to codziennie.",
+  "Podać dalej?",
+  "Meritum sprawdza takie wiadomości w źródłach.",
+  "Każde twierdzenie dostaje werdykt, z cytatem i ze źródłem.",
+  "A drugie zdanie z tej samej wiadomości się zgadza.",
+  "Kiedy źródeł brakuje, Meritum mówi wprost: nie wiemy, więc nie zgadujemy.",
+  "Na stronie, na Discordzie i we wtyczce wynik jest ten sam.",
+  "Sprawdź, zanim podasz dalej.",
+  "Meritum. Obywatelski radar dezinformacji."
+ ],
+ "clips": [
+  {
+   "start": 0,
+   "end": 1.631
+  },
+  {
+   "start": 1.631,
+   "end": 2.792
+  },
+  {
+   "start": 2.792,
+   "end": 5.915
+  },
+  {
+   "start": 5.937,
+   "end": 10.438
+  },
+  {
+   "start": 10.5,
+   "end": 14.049
+  },
+  {
+   "start": 14.111,
+   "end": 19.865
+  },
+  {
+   "start": 19.865,
+   "end": 24.062
+  },
+  {
+   "start": 24.062,
+   "end": 26.205
+  },
+  {
+   "start": 26.205,
+   "end": 29.768
+  }
+ ],
+ "words": [
+  {
+   "text": "Dostajesz",
+   "line": 0,
+   "start": 0,
+   "end": 0.615
+  },
+  {
+   "text": "to",
+   "line": 0,
+   "start": 0.65,
+   "end": 0.731
+  },
+  {
+   "text": "codziennie.",
+   "line": 0,
+   "start": 0.789,
+   "end": 1.591
+  },
+  {
+   "text": "Podać",
+   "line": 1,
+   "start": 1.672,
+   "end": 2.043
+  },
+  {
+   "text": "dalej?",
+   "line": 1,
+   "start": 2.125,
+   "end": 2.705
+  },
+  {
+   "text": "Meritum",
+   "line": 2,
+   "start": 2.879,
+   "end": 3.413
+  },
+  {
+   "text": "sprawdza",
+   "line": 2,
+   "start": 3.495,
+   "end": 3.994
+  },
+  {
+   "text": "takie",
+   "line": 2,
+   "start": 4.075,
+   "end": 4.365
+  },
+  {
+   "text": "wiadomości",
+   "line": 2,
+   "start": 4.412,
+   "end": 4.992
+  },
+  {
+   "text": "w",
+   "line": 2,
+   "start": 5.039,
+   "end": 5.062
+  },
+  {
+   "text": "źródłach.",
+   "line": 2,
+   "start": 5.108,
+   "end": 5.793
+  },
+  {
+   "text": "Każde",
+   "line": 3,
+   "start": 6.037,
+   "end": 6.455
+  },
+  {
+   "text": "twierdzenie",
+   "line": 3,
+   "start": 6.49,
+   "end": 7.047
+  },
+  {
+   "text": "dostaje",
+   "line": 3,
+   "start": 7.094,
+   "end": 7.5
+  },
+  {
+   "text": "werdykt,",
+   "line": 3,
+   "start": 7.57,
+   "end": 8.313
+  },
+  {
+   "text": "z",
+   "line": 3,
+   "start": 8.406,
+   "end": 8.475
+  },
+  {
+   "text": "cytatem",
+   "line": 3,
+   "start": 8.545,
+   "end": 9.137
+  },
+  {
+   "text": "i",
+   "line": 3,
+   "start": 9.253,
+   "end": 9.323
+  },
+  {
+   "text": "ze",
+   "line": 3,
+   "start": 9.404,
+   "end": 9.497
+  },
+  {
+   "text": "źródłem.",
+   "line": 3,
+   "start": 9.555,
+   "end": 10.275
+  },
+  {
+   "text": "A",
+   "line": 4,
+   "start": 10.6,
+   "end": 10.751
+  },
+  {
+   "text": "drugie",
+   "line": 4,
+   "start": 10.844,
+   "end": 11.192
+  },
+  {
+   "text": "zdanie",
+   "line": 4,
+   "start": 11.227,
+   "end": 11.598
+  },
+  {
+   "text": "z",
+   "line": 4,
+   "start": 11.633,
+   "end": 11.656
+  },
+  {
+   "text": "tej",
+   "line": 4,
+   "start": 11.714,
+   "end": 11.854
+  },
+  {
+   "text": "samej",
+   "line": 4,
+   "start": 11.912,
+   "end": 12.214
+  },
+  {
+   "text": "wiadomości",
+   "line": 4,
+   "start": 12.26,
+   "end": 12.945
+  },
+  {
+   "text": "się",
+   "line": 4,
+   "start": 13.015,
+   "end": 13.154
+  },
+  {
+   "text": "zgadza.",
+   "line": 4,
+   "start": 13.212,
+   "end": 13.886
+  },
+  {
+   "text": "Kiedy",
+   "line": 5,
+   "start": 14.211,
+   "end": 14.478
+  },
+  {
+   "text": "źródeł",
+   "line": 5,
+   "start": 14.524,
+   "end": 14.884
+  },
+  {
+   "text": "brakuje,",
+   "line": 5,
+   "start": 14.93,
+   "end": 15.639
+  },
+  {
+   "text": "Meritum",
+   "line": 5,
+   "start": 15.732,
+   "end": 16.208
+  },
+  {
+   "text": "mówi",
+   "line": 5,
+   "start": 16.277,
+   "end": 16.533
+  },
+  {
+   "text": "wprost:",
+   "line": 5,
+   "start": 16.591,
+   "end": 17.23
+  },
+  {
+   "text": "nie",
+   "line": 5,
+   "start": 17.439,
+   "end": 17.601
+  },
+  {
+   "text": "wiemy,",
+   "line": 5,
+   "start": 17.671,
+   "end": 18.182
+  },
+  {
+   "text": "więc",
+   "line": 5,
+   "start": 18.228,
+   "end": 18.576
+  },
+  {
+   "text": "nie",
+   "line": 5,
+   "start": 18.751,
+   "end": 18.901
+  },
+  {
+   "text": "zgadujemy.",
+   "line": 5,
+   "start": 18.948,
+   "end": 19.807
+  },
+  {
+   "text": "Na",
+   "line": 6,
+   "start": 19.923,
+   "end": 20.097
+  },
+  {
+   "text": "stronie,",
+   "line": 6,
+   "start": 20.144,
+   "end": 20.585
+  },
+  {
+   "text": "na",
+   "line": 6,
+   "start": 20.608,
+   "end": 20.689
+  },
+  {
+   "text": "Discordzie",
+   "line": 6,
+   "start": 20.747,
+   "end": 21.34
+  },
+  {
+   "text": "i",
+   "line": 6,
+   "start": 21.421,
+   "end": 21.467
+  },
+  {
+   "text": "we",
+   "line": 6,
+   "start": 21.549,
+   "end": 21.641
+  },
+  {
+   "text": "wtyczce",
+   "line": 6,
+   "start": 21.676,
+   "end": 22.21
+  },
+  {
+   "text": "wynik",
+   "line": 6,
+   "start": 22.454,
+   "end": 22.849
+  },
+  {
+   "text": "jest",
+   "line": 6,
+   "start": 22.93,
+   "end": 23.116
+  },
+  {
+   "text": "ten",
+   "line": 6,
+   "start": 23.197,
+   "end": 23.394
+  },
+  {
+   "text": "sam.",
+   "line": 6,
+   "start": 23.476,
+   "end": 23.975
+  },
+  {
+   "text": "Sprawdź,",
+   "line": 7,
+   "start": 24.149,
+   "end": 24.764
+  },
+  {
+   "text": "zanim",
+   "line": 7,
+   "start": 24.811,
+   "end": 25.194
+  },
+  {
+   "text": "podasz",
+   "line": 7,
+   "start": 25.252,
+   "end": 25.6
+  },
+  {
+   "text": "dalej.",
+   "line": 7,
+   "start": 25.635,
+   "end": 26.158
+  },
+  {
+   "text": "Meritum.",
+   "line": 8,
+   "start": 26.251,
+   "end": 27.005
+  },
+  {
+   "text": "Obywatelski",
+   "line": 8,
+   "start": 27.098,
+   "end": 27.957
+  },
+  {
+   "text": "radar",
+   "line": 8,
+   "start": 28.038,
+   "end": 28.387
+  },
+  {
+   "text": "dezinformacji.",
+   "line": 8,
+   "start": 28.48,
+   "end": 29.768
+  }
+ ]
+}

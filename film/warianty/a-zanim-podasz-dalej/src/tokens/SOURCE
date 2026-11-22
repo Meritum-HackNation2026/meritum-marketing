@@ -1,0 +1,3 @@
+meritum.css and display.css are copies of meritum-design-system/tokens at origin/main 48b9832.
+src/data/pl.json and src/data/examples.json are copies of copy/pl.json and contracts/examples.json
+from the same commit. Do not edit them here: change the design system and copy again.
