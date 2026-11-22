@@ -190,13 +190,13 @@ def preview(d: Deck, out: Path) -> None:
 def build(art: Path, preview_dir: Path | None = None) -> None:
     d = Deck(art)
 
-    d.slide("Meritum to obywatelski radar dezinformacji. Wklejasz tekst albo link, a system sprawdza twierdzenia w źródłach z katalogu, pokazuje cytat i mówi wprost, gdy nie ma dowodów. Hasło brzmi: sprawdź, zanim podasz dalej. Po prawej jest prototyp interfejsu z wynikiem przykładowym. Cytat pochodzi z artykułu 127 Konstytucji. Przed pitchem dopisz nazwę zespołu.")
+    d.slide("Meritum to obywatelski radar dezinformacji. Wklejasz tekst albo link, a system sprawdza twierdzenia w źródłach z katalogu, pokazuje cytat i mówi wprost, gdy nie ma dowodów. Hasło brzmi: sprawdź, zanim podasz dalej. Po prawej jest fragment strony głównej z wersji dev z wynikiem przykładowym. Cytat pochodzi z artykułu 127 Konstytucji. Przed pitchem dopisz nazwę zespołu.")
     d.pic("lockup", L, 96, h=56, alt="Meritum")
     d.text(L, 162, 600, 30, "obywatelski radar dezinformacji", size=22, color=INK2)
     d.text(L, 340, 920, 230, "Sprawdź, zanim\npodasz dalej.", size=104, bold=True, spacing=1.0, name="Tytuł")
     d.text(L, 590, 820, 140, "Wklejasz tekst albo link. Meritum sprawdza twierdzenia w źródłach, pokazuje cytat słowo w słowo i mówi wprost, gdy nie ma dowodów.", size=30, color=INK2, spacing=1.35, name="Podtytuł")
-    d.pic("home", 1128, 120, 680, 800, alt="Prototyp: wynik Fałszywe z cytatem z Konstytucji RP")
-    d.note("Po prawej prototyp interfejsu z wynikiem przykładowym. Cytat to art. 127 ust. 2 Konstytucji RP.")
+    d.pic("home", 1128, 120, 680, 800, alt="Strona główna: przykładowy wynik Fałszywe z cytatem z Konstytucji RP")
+    d.note("Po prawej przykładowy wynik ze strony głównej (wersja dev). Cytat to art. 127 ust. 2 Konstytucji RP.")
     d.text(L, 1012, 600, 28, "Konkurs MSZ „Prawdowid”", size=20, color=INK2)
 
     d.slide("Problem w 20 sekund. „Od stycznia nie zapłacisz w sklepie gotówką” krąży w wiadomościach. Sprostowanie istnieje, ale w innym miejscu niż plotka. Sprawdzenie zabiera czas i wymaga wiedzy, które źródło jest wiarygodne. Czat AI brzmi pewnie także wtedy, gdy się myli, a zmyślony cytat wygląda jak prawdziwy. Dlatego Meritum opiera każdą odpowiedź na jasno opisanym zbiorze źródeł.")

@@ -8,7 +8,8 @@ Ta sama historia co w `../meritum-deck.pptx`, złożona w HTML: 12 slajdów w mo
 | `meritum-own.pdf` | wersja dla jury |
 | `meritum-own.pptx` | te same slajdy jako obrazy, z notatkami prowadzącego (do pokazu w PowerPoincie albo Google Slides) |
 | `slides/` | każdy slajd jako PNG 1920 × 1080 |
-| `assets/ui-*.png` | zrzuty z prototypu interfejsu (`meritum-frontend`, `lab/`), tryb jasny, okno 1440 × 900 i 390 × 844, skala 2 |
+| `assets/ui-home.png`, `ui-form-mobile.png` | zrzuty scalonej strony głównej i strony „Sprawdź informację” z meritum-dev.gburek.app (gałąź `develop`), tryb jasny, okno 1440 × 900 i 390 × 844, skala 2 |
+| `assets/ui-progress.png`, `ui-false.png`, `ui-abstain.png` | zrzuty z prototypu interfejsu (`meritum-frontend`, `lab/`), te same ustawienia; pasek postępu i strona wyniku nie są jeszcze scalone |
 | `assets/brands/` | logotypy technologii z Simple Icons (CC0; znaki należą do właścicieli) |
 | `photos/` | zdjęcia z Unsplash, autorzy w `photos/CREDITS.md` |
 
@@ -30,4 +31,4 @@ Ikony to Lucide (licencja ISC), w kolorze tekstu i zawsze obok tekstu.
 
 ## Co jest przykładem
 
-Slajd 11 nie ma liczb: kolumna wyników czeka na pierwszy przebieg skryptu ewaluacji (meritum-worker#40). Zrzuty na slajdach 1, 3, 6 i 7 pochodzą z prototypu bez połączenia z API i pokazują wynik przykładowy, co mówi dopisek na każdym z nich. Cytaty na tych zrzutach są prawdziwe: art. 127 ust. 2 Konstytucji RP. Plotka na slajdzie 2 i tekst z poleceniem na slajdzie 8 to przykłady do pokazu.
+Slajd 11 nie ma liczb: kolumna wyników czeka na pierwszy przebieg skryptu ewaluacji (meritum-worker#40). Zrzuty na slajdach 1 i 3 to scalone strony z wersji dev; wynik na slajdzie 1 strona sama podpisuje jako przykładowy. Zrzuty na slajdach 6 i 7 pochodzą z prototypu bez połączenia z API i pokazują wynik przykładowy. Dopisek na każdym slajdzie mówi, skąd jest zrzut. Cytaty na zrzutach są prawdziwe: art. 127 ust. 2 Konstytucji RP. Plotka na slajdzie 2 i tekst z poleceniem na slajdzie 8 to przykłady do pokazu.

@@ -24,4 +24,4 @@ Dopisek `--preview KATALOG` rysuje te same pola w tych samych miejscach w Chrome
 
 Każda liczba na slajdzie z wynikami musi pochodzić z naszego skryptu ewaluacji i dać się odtworzyć. Dopóki pierwszego przebiegu nie ma, kolumna wyników mówi „czeka na przebieg”.
 
-Zrzuty interfejsu pochodzą z prototypu (`meritum-frontend`, `lab/`), który nie łączy się z API i pokazuje wynik przykładowy z kontraktów. Każdy slajd ze zrzutem mówi to w dopisku. Strony „Jak działa” z prototypu nie pokazujemy, bo ma przykładowe mierniki, które wyglądałyby jak pomiar.
+Zrzuty strony głównej i strony „Sprawdź informację” pochodzą z wersji dev (scalona gałąź `develop`). Pasek postępu i strona wyniku nie są jeszcze scalone, więc te zrzuty pochodzą z prototypu (`meritum-frontend`, `lab/`), który nie łączy się z API i pokazuje wynik przykładowy z kontraktów. Każdy slajd ze zrzutem mówi w dopisku, skąd on jest. Strony „Jak działa” z prototypu nie pokazujemy, bo ma przykładowe mierniki, które wyglądałyby jak pomiar.
