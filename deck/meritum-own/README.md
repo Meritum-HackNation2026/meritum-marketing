@@ -1,6 +1,6 @@
 # Nasza wersja decku
 
-Ta sama historia co w `../meritum-deck.pptx`, złożona na design systemie Meritum: 12 slajdów, kolory z `tokens/meritum.css`, Archivo i Azeret Mono, logo z `brand/`, zrzuty z makiet z `presentation/screenshots/`. Motyw, który się powtarza: zaznaczony fragment cytatu, czyli to, co Meritum sprawdza słowo w słowo, zanim pokaże werdykt.
+Ta sama historia co w `../meritum-deck.pptx`, złożona w HTML: 12 slajdów w motywie Atrament. Kolory pochodzą z `design-system/tokens/meritum.css` (białe tło, czarny tekst, chłodne szarości, kolor tylko w plakietkach werdyktów), krój to Schibsted Grotesk, a Azeret Mono służy do identyfikatorów i domen. Logotyp zostaje w Archivo. Slajdy nie mają kart ani linii między sekcjami. Jedyne ramki to okno zrzutu z prototypu i granica serwera na diagramie architektury. Powtarza się znak z produktu: polski cudzysłów otwierający przy cytowanym twierdzeniu.
 
 | Plik | Co to jest |
 |---|---|
@@ -8,7 +8,9 @@ Ta sama historia co w `../meritum-deck.pptx`, złożona na design systemie Merit
 | `meritum-own.pdf` | wersja dla jury |
 | `meritum-own.pptx` | te same slajdy jako obrazy, z notatkami prowadzącego (do pokazu w PowerPoincie albo Google Slides) |
 | `slides/` | każdy slajd jako PNG 1920 × 1080 |
-| `assets/` | logo i zrzuty z design systemu |
+| `assets/ui-home.png`, `ui-form-mobile.png` | zrzuty scalonej strony głównej i strony „Sprawdź informację” z meritum-dev.gburek.app (gałąź `develop`), tryb jasny, okno 1440 × 900 i 390 × 844, skala 2 |
+| `assets/ui-progress.png`, `ui-false.png`, `ui-abstain.png` | zrzuty z prototypu interfejsu (`meritum-frontend`, `lab/`), te same ustawienia; pasek postępu i strona wyniku nie są jeszcze scalone |
+| `assets/brands/` | logotypy technologii z Simple Icons (CC0; znaki należą do właścicieli) |
 | `photos/` | zdjęcia z Unsplash, autorzy w `photos/CREDITS.md` |
 
 Zmiany robimy w `index.html`, potem z katalogu głównego repo:
@@ -17,6 +19,16 @@ Zmiany robimy w `index.html`, potem z katalogu głównego repo:
 uv run --with playwright --with python-pptx python deck/meritum-own/build.py
 ```
 
-Skrypt otwiera Chrome bez okna, zapisuje PNG, PDF i PPTX i przerywa, gdy slajdów jest więcej niż 12. Kroje pisma ładują się z Google Fonts, więc potrzebny jest internet.
+Skrypt otwiera Chrome bez okna, zapisuje PNG, PDF i PPTX i przerywa, gdy slajdów jest więcej niż 12. Kroje ładują się z Google Fonts, więc potrzebny jest internet. Po zmianie diagramu albo zrzutu uruchom też `deck/build_team_deck.py`, bo deck zespołu bierze obrazy stąd.
 
-Slajd 11 nie ma jeszcze liczb: kolumna wyników czeka na pierwszy przebieg skryptu ewaluacji (meritum-worker#40). Wszystko inne, co pochodzi z makiet, ma dopisek „przykład do pokazu” albo „dane symulowane”. Cytat na slajdzie 1 to prawdziwy art. 127 ust. 2 Konstytucji RP.
+## Diagramy
+
+- Slajd 4: każdy kanał wysyła `CheckRequest` do jednego API i dostaje `CheckResult` (`meritum-docs`, `kanaly.md`).
+- Slajd 5: kroki sprawdzenia z trzema wyszukiwaniami naraz (`meritum-docs`, `jak-dziala/sprawdzenie.md`).
+- Slajd 10: kontenery i usługi zewnętrzne (`meritum-docs`, `architektura/index.md`). Cloudflare, gateway, DBOS i Hono nie mają logotypu w `design-system/presentation/icons/brands/`, więc stoją przy nich ikony Lucide albo sama nazwa.
+
+Ikony to Lucide (licencja ISC), w kolorze tekstu i zawsze obok tekstu.
+
+## Co jest przykładem
+
+Slajd 11 nie ma liczb: kolumna wyników czeka na pierwszy przebieg skryptu ewaluacji (meritum-worker#40). Zrzuty na slajdach 1 i 3 to scalone strony z wersji dev; wynik na slajdzie 1 strona sama podpisuje jako przykładowy. Zrzuty na slajdach 6 i 7 pochodzą z prototypu bez połączenia z API i pokazują wynik przykładowy. Dopisek na każdym slajdzie mówi, skąd jest zrzut. Cytaty na zrzutach są prawdziwe: art. 127 ust. 2 Konstytucji RP. Plotka na slajdzie 2 i tekst z poleceniem na slajdzie 8 to przykłady do pokazu.
