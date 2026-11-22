@@ -8,7 +8,7 @@ Treść zadania konkursu MSZ „Prawdowid” wymienia osiem rzeczy, które musi 
 | --- | --- | --- | --- |
 | 1 | Nazwa zespołu, tytuł i opis do 4000 znaków | tekst gotowy, nazwę potwierdza zespół | [sekcja 1](#1-nazwa-zespołu-tytuł-i-opis) |
 | 2 | Prezentacja PDF, najwyżej 12 slajdów | są dwie wersje, zespół wybiera jedną | [sekcja 2](#2-prezentacja-pdf) |
-| 3 | Film demonstracyjny pod linkiem, najwyżej 3 minuty | film jest, publicznego linku jeszcze nie ma | [sekcja 3](#3-film-demonstracyjny) |
+| 3 | Film demonstracyjny pod linkiem, najwyżej 3 minuty | trzy warianty pod publicznymi linkami, zespół wybiera jeden | [sekcja 3](#3-film-demonstracyjny) |
 | 4 | Link do repozytorium z instrukcją uruchomienia | instrukcja gotowa, repozytoria są prywatne | [sekcja 4](#4-repozytorium-i-uruchomienie) |
 | 5 | Architektura, przepływ danych, modele, dostawcy, ograniczenia | gotowe | [sekcja 5](#5-architektura-przepływ-danych-modele-dostawcy-ograniczenia) |
 | 6 | Źródła, licencje, kwalifikacja i aktualizacja | gotowe | [sekcja 6](#6-źródła-licencje-kwalifikacja-i-aktualizacja) |
@@ -52,10 +52,12 @@ Wymóg: PDF, najwyżej 12 slajdów, z problemem, użytkownikami, architekturą, 
 
 | Plik | Slajdy | Co to jest |
 | --- | --- | --- |
-| [`deck/meritum-deck.pdf`](../deck/meritum-deck.pdf) | 11 | deck zespołu, eksport z PowerPointa; źródło [`deck/meritum-deck.pptx`](../deck/meritum-deck.pptx) |
+| [`deck/meritum-deck.pdf`](../deck/meritum-deck.pdf) | 12 | deck zespołu, eksport z PowerPointa; źródło [`deck/meritum-deck.pptx`](../deck/meritum-deck.pptx) |
 | [`deck/meritum-own/meritum-own.pdf`](../deck/meritum-own/meritum-own.pdf) | 12 | nasza wersja tej samej historii; źródło [`deck/meritum-own/index.html`](../deck/meritum-own/index.html) |
 
-Jury dostaje jeden plik. Oba mają wszystkie wymagane części. Slajd z wynikami w obu wersjach czeka jeszcze na liczby z [sekcji 7](#7-wyniki-testów); slajdy o kosztach i skalowaniu powstają w zgłoszeniu #21. Jak budować i eksportować decki: [`deck/README.md`](../deck/README.md).
+Jury dostaje jeden plik. Oba mają te same 12 slajdów i wszystkie wymagane części: problem, użytkowników i kanały, architekturę (slajd 8), demonstrację, wyniki testów (slajd 9), koszty i skalowanie (slajdy 10 i 11), ryzyka i dalsze kroki. Liczby na slajdach pochodzą z arkusza [`docs/meritum-koszty-i-wyniki.xlsx`](../docs/meritum-koszty-i-wyniki.xlsx). Dodatek poza limitem slajdów: [`deck/meritum-own/dodatek.pdf`](../deck/meritum-own/dodatek.pdf). Jak budować i eksportować decki: [`deck/README.md`](../deck/README.md).
+
+Publiczne kopie: [prezentacja Meritum](https://meritum-static.gburek.app/pitch/meritum-own.pdf), [prezentacja zespołu](https://meritum-static.gburek.app/pitch/meritum-deck.pdf), [arkusz](https://meritum-static.gburek.app/meritum-koszty-i-wyniki.xlsx), [dodatek](https://meritum-static.gburek.app/dodatek.html).
 
 ## 3. Film demonstracyjny
 
@@ -65,9 +67,15 @@ Wymóg: film dostępny pod linkiem, najwyżej 3 minuty.
 | --- | --- | --- |
 | [`film/meritum-film.mp4`](../film/meritum-film.mp4) | 85 s | w repozytorium; scenariusz w [`film/scenariusz.md`](../film/scenariusz.md) |
 
-Trzy krótsze warianty (30 do 40 s, dwa z lektorem) czekają na wybór w PR #22, #23 i #24; po scaleniu będą w `film/warianty/`.
+Trzy krótsze warianty czekają na wybór w PR #22, #23 i #24; po scaleniu będą w `film/warianty/`. Wszystkie trzy są już dostępne publicznie, bez logowania:
 
-Publicznego linku jeszcze nie ma. Wybrany film trzeba wgrać w miejsce dostępne bez logowania i wpisać adres tutaj oraz do formularza. Zrzuty interfejsu w filmie to dane symulowane i każde ujęcie z wynikiem ma taki podpis. Źródła dźwięku i krojów: [`film/CREDITS.md`](../film/CREDITS.md).
+| Wariant | Długość | Adres |
+| --- | --- | --- |
+| A „Zanim podasz dalej”, z lektorem | 40 s | https://meritum-static.gburek.app/film/meritum-film-a.mp4 |
+| B „Jedno zdanie”, bez lektora | 40 s | https://meritum-static.gburek.app/film/meritum-film-b.mp4 |
+| C „Manifest”, z lektorem | 31 s | https://meritum-static.gburek.app/film/meritum-film-c.mp4 |
+
+Do formularza idzie jeden adres: ten, który wybierze zespół. Zrzuty interfejsu w filmie to dane symulowane i każde ujęcie z wynikiem ma taki podpis. Źródła dźwięku i krojów: [`film/CREDITS.md`](../film/CREDITS.md).
 
 ## 4. Repozytorium i uruchomienie
 
@@ -113,7 +121,7 @@ Wymóg: krótki opis architektury, przepływu danych, użytych modeli, dostawcó
 
 **Ograniczenia.** Mediana czasu odpowiedzi to około 50 s przy celu 30 s. Vertex AI Search nie ma gwarancji przetwarzania w UE. Awaria dostawcy kończy się stanem „Problem techniczny”. SMS i konektor MCP działają tylko w wersji dev.
 
-Szczegóły są w dokumentacji `meritum-docs`: [komponenty](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/komponenty.md), [przepływ danych](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/przeplyw-danych.md), [porty i adaptery](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/porty-i-adaptery.md), [prywatność](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/prywatnosc.md). Diagram architektury jest na slajdzie 9 [decku zespołu](../deck/meritum-deck.pdf) i slajdzie 10 [naszej wersji](../deck/meritum-own/meritum-own.pdf). Koszty i plan skalowania: [`docs/koszty-i-skalowanie.md`](../docs/koszty-i-skalowanie.md).
+Szczegóły są w dokumentacji `meritum-docs`: [komponenty](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/komponenty.md), [przepływ danych](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/przeplyw-danych.md), [porty i adaptery](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/architektura/porty-i-adaptery.md), [prywatność](https://github.com/Meritum-HackNation2026/meritum-docs/blob/main/docs/prywatnosc.md). Diagram architektury jest na slajdzie 8 obu prezentacji ([zespołu](../deck/meritum-deck.pdf), [Meritum](../deck/meritum-own/meritum-own.pdf)), a pełny diagram kontenerów w [dodatku](../deck/meritum-own/dodatek.pdf). Koszty i plan skalowania: [`docs/koszty-i-skalowanie.md`](../docs/koszty-i-skalowanie.md).
 
 ## 6. Źródła, licencje, kwalifikacja i aktualizacja
 
@@ -210,8 +218,8 @@ Wymóg: krótka lista najważniejszych ryzyk, obejmująca co najmniej halucynacj
 
 ## Co zostało do zrobienia
 
-1. **Link do filmu.** Wybrać wersję, wgrać ją w miejsce dostępne bez logowania i wpisać adres w [sekcji 3](#3-film-demonstracyjny).
-2. **Jedna prezentacja.** Wybrać PDF dla jury i wpisać do niego wyniki z [sekcji 7](#7-wyniki-testów).
+1. **Film.** Wybrać jeden z trzech wariantów z [sekcji 3](#3-film-demonstracyjny) i wpisać jego adres do formularza.
+2. **Jedna prezentacja.** Wybrać PDF dla jury z [sekcji 2](#2-prezentacja-pdf).
 3. **Repozytoria.** Upublicznić je albo dać jury dostęp, i sprawdzić `docker compose up` na czystej maszynie.
 4. **Poprawność cytowania.** Ustalić, który miernik odpowiada celowi 85%, i poprawić opis, jeśli to nie precyzja według sędziego.
 5. **Odporność na wstrzyknięcia.** Zmierzyć ją w całym potoku albo zostawić w zgłoszeniu jako niezmierzoną.
