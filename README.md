@@ -8,7 +8,7 @@ Materiały konkursowe i promocyjne Meritum, obywatelskiego radaru dezinformacji 
 | [`film/`](film/) | scenariusz, link do filmu, pliki wideo w Git LFS | film pod linkiem, najwyżej 3 minuty |
 | [`social/`](social/) | grafiki do mediów społecznościowych | brak |
 | [`docs/`](docs/) | koszt wdrożenia (chmura i on-prem) oraz plan skalowania | odpowiedź na wymóg opisu kosztów i zachowania przy większym ruchu (ADR-18) |
-| [`submission.md`](submission.md) | opis do formularza (do 4000 znaków), lista kontrolna §4 i lista rzeczy dla ludzi | opis, link do repozytorium, instrukcja uruchomienia |
+| [`zgloszenie/`](zgloszenie/README.md) | osiem wymagań formalnych w jednym pliku: opis do formularza (do 4000 znaków), linki do prezentacji i filmu, architektura, źródła, wyniki testów, ryzyka | wszystkie wymagania formalne |
 
 Treść pitchu: `design-system/KEY_SELLING_POINTS.md`. Wygląd, kolory, kroje i logo: `design-system/DESIGN_SYSTEM.md` i `design-system/presentation/README.md` (instrukcja szablonu PPTX). Pełna treść zadania i regulamin są w folderze `konkursy/` u właściciela repo.
 

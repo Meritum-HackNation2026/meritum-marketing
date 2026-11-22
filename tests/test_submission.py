@@ -1,10 +1,10 @@
-"""Sprawdza submission.md: opis do 4000 znaków, wymagane sekcje, zakazane frazy."""
+"""Sprawdza zgloszenie/README.md: opis do 4000 znaków, wymagane sekcje, zakazane frazy."""
 import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TEXT = (ROOT / "submission.md").read_text(encoding="utf-8")
+TEXT = (ROOT / "zgloszenie" / "README.md").read_text(encoding="utf-8")
 MAX_CHARS = 4000
 FORBIDDEN = ["nask", "msz współpracuj", "współprac", "oraz scamu", "kampani", "botów"]
 REQUIRED = [
