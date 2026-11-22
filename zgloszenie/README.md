@@ -39,7 +39,7 @@ Meritum to obywatelski radar dezinformacji. Wklejasz tekst albo link, a system s
 
 **Źródła i licencje.** Katalog ma 64 domeny: 54 urzędowe i pierwotne (serwisy gov.pl i agencji z listy organizatora, ISAP, EUR-Lex, dane.gov.pl, BIP) oraz 10 wtórnych (fact-checkerzy z IFCN, EUvsDisinfo). Każda pozycja ma wydawcę, licencję albo podstawę prawną, wynik kontroli robots.txt i zastrzeżeń eksploracji tekstów, częstotliwość odświeżania i powód kwalifikacji. Korpus odświeża się co 15 minut i ma migawki co godzinę.
 
-**Wyniki testów.** Liczby pochodzą z naszego skryptu `meritum-eval` na jawnym zestawie 64 przypadków, przez API wersji dev. Ostatni przebieg z 22.11: trafność werdyktu macro-F1 0,82 (cel 0,75), pokrycie cytowań 90% (cel 95%), precyzja cytatów według sędziego 83% (cel 85%), wstrzymanie przy braku dowodów 100% (cel 80%), mediana czasu 50 s (cel 30 s). Odporności na wstrzyknięcia poleceń w całym potoku jeszcze nie zmierzyliśmy. Zestawu referencyjnego jury nie znamy i niczego na nim nie stroimy. Raporty wszystkich przebiegów i polecenie do odtworzenia są w `evals/reports/` w `meritum-worker`. Zrzuty w prezentacji i filmie to dane symulowane.
+**Wyniki testów.** Liczby pochodzą z naszego skryptu `meritum-eval` na jawnym zestawie 64 przypadków, przez API wersji dev. Ostatni przebieg z 22.11: trafność werdyktu macro-F1 0,82 według raportu i 0,65 w liczeniu ścisłym (cel 0,75), pokrycie cytowań 90% (cel 95%), precyzja cytatów według sędziego 83% (cel 85%), wstrzymanie przy braku dowodów 100% (cel 80%), mediana czasu 50 s (cel 30 s). Odporności na wstrzyknięcia poleceń w całym potoku jeszcze nie zmierzyliśmy. Zestawu referencyjnego jury nie znamy i niczego na nim nie stroimy. Raporty wszystkich przebiegów i polecenie do odtworzenia są w `evals/reports/` w `meritum-worker`. Zrzuty w prezentacji i filmie to dane symulowane.
 
 **Ograniczenia i ryzyka.** Czas odpowiedzi jest prawie dwa razy dłuższy od celu. Zestaw testowy jest nasz i mały. Zależymy od zewnętrznych dostawców: ich awaria kończy się stanem „Problem techniczny”, nigdy werdyktem. Vertex AI Search działa poza gwarancją UE. Demo działa na serwerze zespołu, docelowo GCP. Wstrzykiwanie poleceń przez treść źródeł ograniczamy skanem i kwarantanną. Zgody organizatora na źródła nie mamy na piśmie.
 
@@ -150,7 +150,8 @@ Ostatni przebieg, `fact-checks-2026-11-22-7b.json` (22.11.2026, 07:24 UTC):
 
 | Miernik | Wynik | Cel MVP | Spełniony |
 | --- | --- | --- | --- |
-| trafność werdyktu, macro-F1 | 0,82 | co najmniej 0,75 | tak |
+| trafność werdyktu, macro-F1 z raportu | 0,82 | co najmniej 0,75 | tak |
+| trafność werdyktu, macro-F1 ścisłe | 0,65 | co najmniej 0,75 | nie |
 | pokrycie cytowań | 90% | co najmniej 95% | nie |
 | precyzja cytatów według sędziego | 83% | co najmniej 85% | nie |
 | wstrzymanie przy braku dowodów | 100% | co najmniej 80% | tak |
@@ -171,6 +172,8 @@ Jak zmieniały się wyniki w kolejnych przebiegach tego samego dnia:
 
 Zastrzeżenia do tych liczb:
 
+- Macro-F1 z raportu zamienia dozwolony werdykt alternatywny na oczekiwany, więc zalicza klasę „wprowadzające w błąd”, której potok nigdy nie zwraca. Liczenie ścisłe bierze tylko werdykty, które system naprawdę zwrócił, i daje 0,65 dla przebiegu 7b (`evals/reports/research.md`). Bez zastrzeżeń spełniamy więc jeden cel z sześciu: wstrzymanie przy braku dowodów.
+- Poprawki powstawały na tych samych 64 przypadkach, więc wynik może być zawyżony.
 - Przebiegi 0 do 2 mają opis przyczyn błędów w `evals/reports/fact-checks.md`. Przebiegi 3 do 7b mają na razie tylko raporty JSON, bez takiej analizy.
 - Zgłoszenie worker#247 opisało dwa błędy pomiaru: sędzia cytatów nie widział źródła, a macro-F1 zaliczało klasę, której potok nie zwraca. Zgłoszenie jest zamknięte, ale przebieg 5 powstał przed poprawką i jego macro-F1 jest zawyżone.
 - Raporty mają też pole `citation_correctness` z wartościami od 0,05 do 0,14. To inny miernik niż precyzja cytatów i przed wysłaniem zgłoszenia trzeba ustalić, który z nich odpowiada celowi „poprawność cytowania 85%”.
@@ -198,7 +201,7 @@ Wymóg: krótka lista najważniejszych ryzyk, obejmująca co najmniej halucynacj
 
 | Ryzyko | Co robimy | Co zostaje |
 | --- | --- | --- |
-| Halucynacje | Cytat musi być w tekście źródła słowo w słowo, inaczej odpada przed pokazaniem. Bez cytatu nie ma werdyktu. | Precyzja cytatów według sędziego to 83%, poniżej celu. |
+| Halucynacje | Cytat musi być w tekście źródła słowo w słowo, inaczej odpada przed pokazaniem. Bez cytatu nie ma werdyktu. | Precyzja cytatów według sędziego to 83%, poniżej celu; ścisła trafność werdyktu to 0,65. |
 | Stronniczość źródeł | Katalog jest jawny, z powodem kwalifikacji każdej domeny. Dwie strony jednego wydawcy liczą się jako jedno źródło. Gdy źródła się różnią, pokazujemy obie strony i nie rozstrzygamy. | Katalog opiera się głównie na źródłach urzędowych. |
 | Prywatność | Maskujemy telefon, e-mail i PESEL przed modelem. Zapis usuwamy po 30 dniach. Rejestr podmiotów przetwarzających jest jawny. | Vertex AI Search działa poza gwarancją UE. |
 | Prompt injection | Kontrola przed każdym wywołaniem modelu, kwarantanna stron z wyszukiwania, zapis każdej próby. Model nie ma narzędzi, które zmieniają dane. | Odporności całego potoku jeszcze nie zmierzyliśmy. |
