@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244 72" width="244" height="72" role="img" aria-label="Meritum, obywatelski radar dezinformacji">
+<style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;display=swap');
+.w{font-family:Archivo,Arial,sans-serif;font-weight:650;font-stretch:112%;font-variation-settings:'wdth' 112;letter-spacing:-0.02em;font-size:40px}
+.s{font-family:Archivo,Arial,sans-serif;font-weight:400;font-size:13px}</style>
+<path d="M10 40V25c0-5.5 3.1-9 7-9s7 3.5 7 9v15M24 25c0-5.5 3.1-9 7-9s7 3.5 7 9v15" fill="none" stroke="#14191E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 25v15" fill="none" stroke="#1D6A86" stroke-width="4" stroke-linecap="round"/>
+<circle cx="24" cy="7.6" r="3.5" fill="#1D6A86"/>
+<text class="w" x="51" y="41" fill="#14191E">meritum</text>
+<text class="s" x="53" y="64" fill="#4C5862">obywatelski radar dezinformacji</text>
+</svg>
