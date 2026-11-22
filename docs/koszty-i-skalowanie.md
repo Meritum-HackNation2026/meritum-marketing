@@ -2,6 +2,16 @@
 
 Stan na 2026-11-22. Opracowane na podstawie: `meritum-infra` (Terraform GCP i skrypty on-prem), `meritum-docs` (ADR-04, 14, 15, 18, 35), `meritum-monorepo` (README, `scripts/measure_costs.py`).
 
+**Dokładne wyliczenia są w arkuszu `meritum-koszty-i-wyniki.xlsx`** (buduje go `build_workbook.py`), i to jego liczby trafiają na slajdy. Ten dokument powstał wcześniej, z cen GCP podanych w przybliżeniu i ze stałych 5 USD za 1000 sprawdzeń na model z wyszukiwarką. Arkusz bierze ceny z cenników z 22.11.2026, koszt modelu z benchmarku (6 USD za 1000 sprawdzeń; w lżejszym ruchu zespołu 1,2 USD), wyszukiwarkę ponad pulę bezpłatną, bramki i liczbę replik workera z pomiaru przepustowości. Wyniki obok siebie:
+
+| Sprawdzeń miesięcznie | Ten dokument (§3) | Arkusz |
+|---|---|---|
+| 10 tys. | ok. 150 USD | 151 USD |
+| 100 tys. | ok. 700 USD | 1 064 USD |
+| 1 mln | ok. 6 500 do 8 000 USD | 9 551 USD |
+
+Różni się też wniosek: w arkuszu model i wyszukiwarka to 32% rachunku przy 10 tys. sprawdzeń i 68% przy 100 tys., więc przewagę nad serwerami zyskują wcześniej, niż mówi §3. Kolejność wąskich gardeł z §5 jest w arkuszu ta sama.
+
 **Co jest zmierzone, a co oszacowane.** Koszt modelu pochodzi teraz z **pomiaru**: `scripts/measure_costs.py` na 49 rekordach `CheckRecord` wyeksportowanych ze środowiska dev (2026-11-22). Ceny usług GCP, wyszukiwarki i sprzętu to nadal **wartości przybliżone z pamięci**. Potwierdź je w kalkulatorze GCP i w ofercie dostawcy sprzętu.
 
 ---
