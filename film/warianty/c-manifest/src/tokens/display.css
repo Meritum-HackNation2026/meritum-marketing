@@ -1,0 +1,60 @@
+/*
+  Meritum, obywatelski radar dezinformacji
+  Display settings for the web page and the panel: a dark high-contrast theme and a text-size
+  scale. Import after tokens/meritum.css. The rules only override custom properties declared there
+  and win over `:root` and `.dark` on specificity; the order matters for one tie only, with the dark
+  platform-skin rule `[data-host]:is(.dark, [data-theme="dark"])` at the end of that file.
+  The platform skins and the extension do not load this file.
+*/
+
+/*
+  Dark, high contrast: black and white, with secondary text, borders and verdicts lifted (secondary
+  text and verdict words at 7:1 or more, borders at 3:1 or more). The app sets
+  `data-contrast="more"` on <html> when the person picks it in the display menu, and
+  `data-contrast="normal"` when they pick plain dark. With no stored choice, dark mode follows the
+  system setting for more contrast. The two rules carry the same values; CSS has no way to share them.
+*/
+:is(.dark, [data-theme="dark"])[data-contrast="more"] {
+  --background: #000000; --foreground: #FFFFFF; --card: #000000; --card-foreground: #FFFFFF;
+  --popover: #000000; --popover-foreground: #FFFFFF; --primary: #FFFFFF; --primary-foreground: #000000;
+  --secondary: #262626; --secondary-foreground: #FFFFFF; --muted: #1A1A1A; --muted-foreground: #D6D6D6;
+  --accent: #262626; --accent-foreground: #FFFFFF; --destructive: #FF9AA8;
+  --border: #8C8C8C; --input: #FFFFFF; --ring: #FFFFFF; --link: #FFFFFF;
+  --verified: #7CF2B4; --verified-surface: #0B2A1B; --verified-foreground: #B4F8D4;
+  --contested: #FFD27A; --contested-surface: #2E2206; --contested-foreground: #FFE0A3;
+  --scam: #FF9AA8; --scam-surface: #33090F; --scam-foreground: #FFC2CB; --scam-border: #B34A58;
+  --sidebar: #000000; --sidebar-foreground: #FFFFFF; --sidebar-primary: #FFFFFF; --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #262626; --sidebar-accent-foreground: #FFFFFF; --sidebar-border: #8C8C8C; --sidebar-ring: #FFFFFF;
+}
+@media (prefers-contrast: more) {
+  :is(.dark, [data-theme="dark"]):not([data-contrast]) {
+  --background: #000000; --foreground: #FFFFFF; --card: #000000; --card-foreground: #FFFFFF;
+  --popover: #000000; --popover-foreground: #FFFFFF; --primary: #FFFFFF; --primary-foreground: #000000;
+  --secondary: #262626; --secondary-foreground: #FFFFFF; --muted: #1A1A1A; --muted-foreground: #D6D6D6;
+  --accent: #262626; --accent-foreground: #FFFFFF; --destructive: #FF9AA8;
+  --border: #8C8C8C; --input: #FFFFFF; --ring: #FFFFFF; --link: #FFFFFF;
+  --verified: #7CF2B4; --verified-surface: #0B2A1B; --verified-foreground: #B4F8D4;
+  --contested: #FFD27A; --contested-surface: #2E2206; --contested-foreground: #FFE0A3;
+  --scam: #FF9AA8; --scam-surface: #33090F; --scam-foreground: #FFC2CB; --scam-border: #B34A58;
+  --sidebar: #000000; --sidebar-foreground: #FFFFFF; --sidebar-primary: #FFFFFF; --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #262626; --sidebar-accent-foreground: #FFFFFF; --sidebar-border: #8C8C8C; --sidebar-ring: #FFFFFF;
+  }
+}
+
+/* high contrast: edges. Black on black has no edge, so popups get an outline and focus a thick ring. */
+:is(.dark, [data-theme="dark"])[data-contrast="more"] :is([data-slot="popover-content"], [data-slot="dropdown-menu-content"], [data-slot="tooltip-content"], [data-slot="dialog-content"], [data-slot="alert-dialog-content"], [data-slot="select-content"]) { border: 1px solid var(--border); }
+:is(.dark, [data-theme="dark"])[data-contrast="more"] :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+@media (prefers-contrast: more) {
+  :is(.dark, [data-theme="dark"]):not([data-contrast]) :is([data-slot="popover-content"], [data-slot="dropdown-menu-content"], [data-slot="tooltip-content"], [data-slot="dialog-content"], [data-slot="alert-dialog-content"], [data-slot="select-content"]) { border: 1px solid var(--border); }
+  :is(.dark, [data-theme="dark"]):not([data-contrast]) :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+}
+
+/*
+  Text size, picked in the display menu: `data-text="l|xl|xxl"` on <html>. A percentage multiplies
+  the size the person set in the browser, and every rem in the interface (type, spacing, widths)
+  grows with it, like Ctrl and plus. Breakpoints do not follow this scale, so a page must fit
+  without sideways scrolling at 150% on a 320 px wide screen (WCAG 1.4.4, 1.4.10).
+*/
+:root[data-text="l"] { font-size: 112.5%; }
+:root[data-text="xl"] { font-size: 125%; }
+:root[data-text="xxl"] { font-size: 150%; }
