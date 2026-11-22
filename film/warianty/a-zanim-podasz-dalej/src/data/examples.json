@@ -1,0 +1,220 @@
+{
+  "$comment": "Contract fixtures, not demo answers. Fragments are verbatim from the Constitution of the Republic of Poland (Dz.U. 1997 nr 78 poz. 483).",
+  "CheckRequest": { "channel": "web", "text": "Prezydent w Polsce może rządzić trzy kadencje, a językiem urzędowym jest polski." },
+  "CheckRequest.discord": { "channel": "discord", "audio_id": "a_01", "channel_user_id": "100000000000000001" },
+  "CheckResult.done": {
+    "check_id": "c_01",
+    "status": "done",
+    "ai_marker": { "ai_generated": true, "provider": "vertex", "model": "gemini-2.0-flash-001", "generated_at": "2026-11-21T14:02:20+01:00" },
+    "corpus_version": "2026-11-21.1",
+    "limitations": ["Sprawdziliśmy tylko tekst Konstytucji RP w korpusie. Nie oceniamy planowanych zmian prawa."],
+    "limitation_codes": ["corpus_scope"],
+    "claims": [
+      {
+        "claim": "Prezydent w Polsce może sprawować urząd przez trzy kadencje.",
+        "claim_date": "2026-11-21", "claim_date_source": "today",
+        "verdict": "false",
+        "strength": { "level": "moderate", "premises": { "independent_sources": 1, "primary_sources": 1, "newest_source_published_at": "1997-07-16T00:00:00+02:00", "newest_source_age_hours": 257280, "validity": "in_force", "agreement": "consistent" } },
+        "citations": [
+          {
+            "source": {
+              "id": "isap-wdu19970780483", "title": "Konstytucja Rzeczypospolitej Polskiej z dnia 2 kwietnia 1997 r.",
+              "publisher": "Kancelaria Sejmu (ISAP)", "publisher_id": "kancelaria-sejmu", "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=wdu19970780483",
+              "domain": "isap.sejm.gov.pl", "kind": "akt_prawny", "tier": "primary",
+              "published_at": "1997-07-16T00:00:00+02:00", "fetched_at": "2026-11-21T12:00:00+01:00"
+            },
+            "fragment": "Prezydent Rzeczypospolitej jest wybierany na pięcioletnią kadencję i może być ponownie wybrany tylko raz.",
+            "stance": "refutes", "validity": "in_force"
+          }
+        ],
+        "explanation": "Konstytucja pozwala na dwie kadencje: wybór i jeden ponowny wybór. Trzecia kadencja nie jest możliwa."
+      },
+      {
+        "claim": "Językiem urzędowym w Polsce jest język polski.",
+        "claim_date": "2026-11-21", "claim_date_source": "today",
+        "verdict": "confirmed",
+        "strength": { "level": "moderate", "premises": { "independent_sources": 1, "primary_sources": 1, "newest_source_published_at": "1997-07-16T00:00:00+02:00", "newest_source_age_hours": 257280, "validity": "in_force", "agreement": "consistent" } },
+        "citations": [
+          {
+            "source": {
+              "id": "isap-wdu19970780483", "title": "Konstytucja Rzeczypospolitej Polskiej z dnia 2 kwietnia 1997 r.",
+              "publisher": "Kancelaria Sejmu (ISAP)", "publisher_id": "kancelaria-sejmu", "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=wdu19970780483",
+              "domain": "isap.sejm.gov.pl", "kind": "akt_prawny", "tier": "primary",
+              "published_at": "1997-07-16T00:00:00+02:00", "fetched_at": "2026-11-21T12:00:00+01:00"
+            },
+            "fragment": "W Rzeczypospolitej Polskiej językiem urzędowym jest język polski.",
+            "stance": "supports", "validity": "in_force"
+          }
+        ],
+        "explanation": "Artykuł 27 Konstytucji mówi to wprost."
+      }
+    ]
+  },
+  "CheckResult.abstain": {
+    "check_id": "c_02",
+    "status": "done",
+    "ai_marker": { "ai_generated": true, "provider": "vertex", "model": "gemini-2.0-flash-001", "generated_at": "2026-11-21T14:02:20+01:00" },
+    "corpus_version": "2026-11-21.1",
+    "limitations": ["Korpus i wyszukiwanie w zatwierdzonych serwisach nie zawierają jeszcze publikacji na ten temat."],
+    "limitation_codes": ["no_publications"],
+    "claims": [
+      {
+        "claim": "Wczoraj w Gdańsku wyłączono wszystkie bankomaty.",
+        "claim_date": "2026-11-20", "claim_date_source": "text",
+        "verdict": "insufficient_evidence",
+        "citations": [],
+        "explanation": "Nie znaleźliśmy żadnej publikacji z zatwierdzonych źródeł, która by to potwierdzała albo obalała.",
+        "unresolved": "Czy takie zdarzenie miało miejsce i kto je ogłosił.",
+        "would_change_verdict": ["needs_named_source"]
+      }
+    ],
+    "escalation": { "state": "created", "case_id": "#S-1" }
+  },
+  "CheckResult.claim_review": {
+    "check_id": "c_04",
+    "status": "done",
+    "ai_marker": { "ai_generated": true, "provider": "vertex", "model": "gemini-2.0-flash-001", "generated_at": "2026-11-21T14:02:20+01:00" },
+    "corpus_version": "2026-11-21.1",
+    "transcript": "Prezydent w Polsce może rządzić trzy kadencje.",
+    "limitations": ["Nie przeszukaliśmy obrazów: nagranie nie zawiera zdjęć."],
+    "limitation_codes": ["image_search_not_run"],
+    "claims": [
+      {
+        "claim": "Prezydent w Polsce może sprawować urząd przez trzy kadencje.",
+        "claim_date": "2026-11-21", "claim_date_source": "today",
+        "verdict": "false",
+        "strength": { "level": "moderate", "premises": { "independent_sources": 1, "primary_sources": 0, "signatory_reviews": 1, "newest_source_published_at": "2026-11-01T00:00:00+01:00", "newest_source_age_hours": 480, "agreement": "consistent" } },
+        "claim_review_premises": [
+          {
+            "publisher": "Demagog", "publisher_id": "demagog", "signatory_of": ["ifcn", "efcsn"],
+            "rating": "Fałsz", "title": "Czy prezydent może rządzić trzy kadencje? Sprawdzamy (fikstura)",
+            "reviewed_at": "2026-11-01T00:00:00+01:00", "url": "https://demagog.org.pl/wypowiedzi/fikstura-trzy-kadencje/",
+            "fetched_at": "2026-11-21T12:00:00+01:00", "stance": "refutes"
+          }
+        ],
+        "explanation": "Fact-checker z sieci IFCN ocenił to twierdzenie jako fałszywe. Konstytucja pozwala na dwie kadencje.",
+        "would_change_verdict": ["needs_primary_source"],
+        "incident": {
+          "database": "fact_check", "incident_id": "demagog-fikstura-1", "matched_on": "content",
+          "match_basis": ["title", "topic", "date"], "title": "Czy prezydent może rządzić trzy kadencje?",
+          "date": "2026-11-01T00:00:00+01:00", "url": "https://demagog.org.pl/wypowiedzi/fikstura-trzy-kadencje/", "similarity": 0.92
+        }
+      }
+    ]
+  },
+  "CheckResult.failure": {
+    "check_id": "c_03",
+    "status": "technical_failure",
+    "failure_code": "web_search_unavailable",
+    "corpus_version": "2026-11-21.1",
+    "message": "Nie udało się przeszukać źródeł: usługa wyszukiwania nie odpowiada. To nie jest ocena treści. Spróbuj za kilka minut."
+  },
+  "CheckResult.audio_rejected": {
+    "check_id": "c_05",
+    "status": "out_of_scope",
+    "corpus_version": "2026-11-21.1",
+    "message": "Nagranie w nieobsługiwanym formacie.",
+    "out_of_scope_code": "audio",
+    "limitations": ["Nie sprawdziliśmy nagrania: ten format nie jest obsługiwany."],
+    "limitation_codes": ["audio_format_unsupported"]
+  },
+  "CheckResult.out_of_scope_image": {
+    "check_id": "c_06",
+    "status": "out_of_scope",
+    "corpus_version": "2026-11-21.1",
+    "message": "Obraz bez tekstu do sprawdzenia.",
+    "out_of_scope_code": "image"
+  },
+  "CachedResult": {
+    "status": "done",
+    "ai_marker": { "ai_generated": true, "provider": "vertex", "model": "gemini-2.0-flash-001", "generated_at": "2026-11-21T14:02:20+01:00" },
+    "corpus_version": "2026-11-21.1",
+    "limitations": ["Korpus i wyszukiwanie w zatwierdzonych serwisach nie zawierają jeszcze publikacji na ten temat."],
+    "limitation_codes": ["no_publications"],
+    "claims": [
+      {
+        "claim": "Wczoraj w Gdańsku wyłączono wszystkie bankomaty.",
+        "claim_date": "2026-11-20", "claim_date_source": "text",
+        "verdict": "insufficient_evidence",
+        "citations": [],
+        "explanation": "Nie znaleźliśmy żadnej publikacji z zatwierdzonych źródeł, która by to potwierdzała albo obalała.",
+        "unresolved": "Czy takie zdarzenie miało miejsce i kto je ogłosił.",
+        "would_change_verdict": ["needs_named_source"]
+      }
+    ],
+    "source_ids": [],
+    "cached_at": "2026-11-21T14:02:24+01:00", "expires_at": "2026-11-21T16:02:24+01:00"
+  },
+  "AnalysisStatus": {
+    "check_id": "c_01",
+    "steps": [
+      { "code": "receive", "status": "done" },
+      { "code": "fetch_url", "status": "skipped" },
+      { "code": "screen_injection", "status": "done" },
+      { "code": "extract_claims", "status": "done" },
+      { "code": "search_corpus", "status": "active" },
+      { "code": "search_web", "status": "active" },
+      { "code": "search_fact_checks", "status": "active" }
+    ],
+    "draft": "Wstępnie: nie znaleziono komunikatu, który to potwierdza."
+  },
+  "CheckRecord": {
+    "check_id": "c_02", "session_id": "s_7f3a9c21", "channel": "extension",
+    "received_at": "2026-11-21T14:02:11+01:00", "answered_at": "2026-11-21T14:02:24+01:00",
+    "question_masked": "Wczoraj w Gdańsku wyłączono wszystkie bankomaty. Dzwońcie [TELEFON].",
+    "status": "done", "verdicts": ["insufficient_evidence"], "source_ids": [], "corpus_version": "2026-11-21.1",
+    "models": [{ "provider": "przykładowy", "model": "przykładowy", "region": "europe-central2", "input_tokens": 2100, "output_tokens": 380, "cost_usd": 0.004 }],
+    "web_search_calls": 1,
+    "escalation": { "state": "created", "case_id": "#S-1" }, "cache_hit": false,
+    "retention_until": "2026-12-21T14:02:24+01:00"
+  },
+  "ModeratorCase": {
+    "id": "#S-1", "state": "open", "reasons": ["insufficient_evidence", "high_risk"],
+    "high_risk_topic": "bezpieczeństwo publiczne", "high_risk_classified_by": "embeddings",
+    "summary": "Wyłączenie bankomatów w Gdańsku: brak publikacji w zatwierdzonych źródłach.",
+    "claims": [{ "claim": "Wczoraj w Gdańsku wyłączono wszystkie bankomaty.", "check_ids": ["c_02"] }], "first_seen": "2026-11-21T14:02:24+01:00", "last_seen": "2026-11-21T14:02:24+01:00"
+  },
+  "CatalogEntry": {
+    "domain": "isap.sejm.gov.pl", "publisher": "Kancelaria Sejmu", "publisher_id": "kancelaria-sejmu", "kind": "akt_prawny", "tier": "primary",
+    "license": "dokument urzędowy, art. 4 ustawy o prawie autorskim", "ingest": "static", "validity": "in_force",
+    "qualified_because": "Oficjalna baza aktów prawnych publikowanych w Dzienniku Ustaw i Monitorze Polskim.",
+    "tdm_reservation": "none"
+  },
+  "CatalogEntry.euvsdisinfo": {
+    "domain": "euvsdisinfo.eu", "publisher": "EEAS East StratCom Task Force (EUvsDisinfo)", "publisher_id": "eeas-euvsdisinfo", "kind": "fact_check", "tier": "secondary",
+    "license": "brak licencji bazy; nota prawna EEAS: ponowne użycie z podaniem źródła", "ingest": "mcp", "refresh_minutes": 1440,
+    "qualified_because": "Baza przypadków prokremlowskiej dezinformacji prowadzona przez EEAS; tekst fact jest cytowalnym dowodem wtórnym."
+  },
+  "Notification": {
+    "id": "n_01", "kind": "check_done", "status": "unread", "session_id": "s_7f3a9c21", "check_id": "c_02",
+    "link": "/sprawdzenia/c_02", "created_at": "2026-11-21T14:02:24+01:00", "retention_until": "2026-12-21T14:02:24+01:00"
+  },
+  "Notification.check_progress": {
+    "id": "n_02", "kind": "check_progress", "status": "unread", "session_id": "s_7f3a9c21", "check_id": "c_02",
+    "step_code": "search_corpus",
+    "link": "/sprawdzenia/c_02", "created_at": "2026-11-21T14:02:12+01:00", "retention_until": "2026-12-21T14:02:12+01:00"
+  },
+  "Notification.system": {
+    "id": "n_03", "kind": "system", "status": "unread", "user_id": "u_4b8e2d10",
+    "message_code": "maintenance_planned",
+    "link": "/", "created_at": "2026-11-21T18:00:00+01:00", "retention_until": "2026-12-21T18:00:00+01:00"
+  },
+  "Notification.eval_run_done": {
+    "id": "n_04", "kind": "eval_run_done", "status": "unread", "user_id": "u_9f2a7c31",
+    "link": "/eval/ev_0001", "created_at": "2026-11-22T10:30:00+01:00", "retention_until": "2026-12-22T10:30:00+01:00"
+  },
+  "EvalRun": {
+    "id": "ev_0001", "case_set": "golden", "status": "done", "corpus_version": "2026-11-22", "user_id": "u_9f2a7c31",
+    "models": ["vertex/gemini-2.5-flash"], "started_at": "2026-11-22T10:00:00+01:00", "finished_at": "2026-11-22T10:30:00+01:00",
+    "metrics": {
+      "cases": 30, "macro_f1": 0.82, "citation_coverage": 0.95, "citation_correctness": 0.9, "abstention": 0.8, "robustness": 1.0,
+      "median_seconds": 12.5, "p95_seconds": 28.0, "max_seconds": 41.0, "input_tokens_per_check": 5200, "output_tokens_per_check": 640,
+      "cost_per_check_usd": 0.004, "cost_100_checks_usd": 0.4, "channel_consistency": 1.0, "information_loop": 1.0
+    },
+    "scenarios": [{"scenario": "A", "cases": 4, "correct": 4, "accuracy": 1.0}],
+    "cases": [
+      {"case_id": "A-org-pap-depesza", "scenario": "A", "check_id": "c_02", "expected": "false", "predicted": "false", "outcome": "correct",
+       "received_at": "2026-11-22T10:00:00+01:00", "answered_at": "2026-11-22T10:00:12+01:00", "cost_usd": 0.004}
+    ]
+  }
+}
