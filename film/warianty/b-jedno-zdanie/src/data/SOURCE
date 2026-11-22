@@ -1,0 +1,3 @@
+examples.json and pl.json are copies of contracts/examples.json and copy/pl.json from meritum-design-system
+at origin/main 1c2b125 (taken through film/src/data). Do not edit them here: change the design system and copy again.
+The colours in src/parts.tsx are the "Atrament" values of tokens/meritum.css from the same commit.
