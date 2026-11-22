@@ -1,0 +1,8 @@
+@import "tailwindcss";
+/* Copies of design-system/tokens (see src/tokens/SOURCE): the Atrament theme, dark and high contrast. */
+@import "./tokens/meritum.css";
+@import "./tokens/display.css";
+
+/* The interface is written in rem. At 24px a 1920px frame shows the layout of a 1280px desktop window,
+   the same mechanism as the text-size setting in tokens/display.css. */
+:root { font-size: 24px; }
