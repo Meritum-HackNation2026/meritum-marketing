@@ -5,7 +5,7 @@ Wymagania z treści zadania: PDF, najwyżej 12 slajdów, a w nich problem, użyt
 Oba decki wyglądają jak produkt po zmianie na motyw Atrament (`design-system/DESIGN_SYSTEM.md`, sekcje 3 do 5): białe tło, czarny tekst, chłodne szarości i żadnego koloru poza plakietkami werdyktów. Tekst jest w kroju Schibsted Grotesk, identyfikatory i domeny w Azeret Mono, a słowo „meritum” w logotypie zostaje w Archivo.
 
 - `meritum-deck.pptx`: deck zespołu, 11 slajdów z edytowalnym tekstem (PowerPoint, Google Slides, Keynote). Buduje go `build_team_deck.py`.
-- `meritum-deck.pdf`: wersja wysyłana jury. Jeszcze jej nie ma, trzeba ją wyeksportować z PPTX (niżej).
+- `meritum-deck.pdf`: wersja wysyłana jury, eksport z PowerPointa. Po każdej zmianie PPTX trzeba ją wyeksportować od nowa (niżej).
 - `meritum-own/`: nasza wersja tej samej historii, 12 slajdów (HTML jako źródło, PDF, PPTX i PNG slajdów), opisana w `meritum-own/README.md`.
 
 ## Deck zespołu

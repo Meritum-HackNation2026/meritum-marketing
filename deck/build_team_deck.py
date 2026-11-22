@@ -297,7 +297,7 @@ def build(art: Path, preview_dir: Path | None = None) -> None:
     d.slide("Wyszukiwanie w całym internecie łamałoby zasadę jasno opisanego zbioru źródeł, więc go nie robimy. Bieżące wydarzenia sprawdzamy w publikacjach z zatwierdzonych serwisów. Strona z wyszukiwania czeka w kwarantannie na skan, potem jest dowodem w tym sprawdzeniu. Pole licencji w katalogu to podstawa prawna użycia treści źródła, na przykład dokument urzędowy z art. 4 ustawy o prawie autorskim. Zgody organizatora nie mamy na piśmie. W rozwiązaniu produkcyjnym potwierdzimy ją u każdego dostawcy.")
     d.photo("card-catalogue.jpg", 0, 760, 0.02, "Otwarta szuflada katalogu kartkowego")
     d.title("Szukamy tylko w źródłach opisanych w katalogu.", w=940, x=872)
-    d.rows([("i-library", "Źródła urzędowe i pierwotne", "gov.pl, ISAP, EUR-Lex, dane.gov.pl, BIP, RCB, GIS, PAA, GIOŚ, CERT, Policja."),
+    y = d.rows([("i-library", "Źródła urzędowe i pierwotne", "gov.pl, ISAP, EUR-Lex, dane.gov.pl, BIP, RCB, GIS, PAA, GIOŚ, CERT, Policja."),
             ("i-badge-check", "Fact-checkerzy", "Oceny w formacie ClaimReview z Google Fact Check Tools API. Podajemy ocenę z linkiem, bez fragmentu strony.")], 872, 330, 930) + 24
     for label, value, font in (("Wpis w katalogu", "isap.sejm.gov.pl", MONO), ("Wydawca", "Kancelaria Sejmu, źródło urzędowe", SANS),
                                ("Licencja", "dokument urzędowy, art. 4 ustawy o prawie autorskim", SANS),
