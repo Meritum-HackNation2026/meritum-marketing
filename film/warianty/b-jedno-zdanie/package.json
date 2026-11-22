@@ -1,0 +1,37 @@
+{
+  "name": "meritum-film-b",
+  "version": "1.0.0",
+  "description": "Film promocyjny Meritum, wariant B „Jedno zdanie” (Remotion)",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.545",
+    "@remotion/google-fonts": "4.0.545",
+    "@remotion/media": "4.0.545",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.545"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.545",
+    "@types/react": "19.3.0",
+    "@types/web": "0.0.166",
+    "eslint": "10.12.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "studio": "remotion studio",
+    "audio": "node scripts/make-audio.mjs",
+    "render": "remotion render MeritumFilmB meritum-film-b.mp4 --codec=h264 --crf=16 --color-space=bt709 --x264-preset=slow --image-format=png --audio-bitrate=320k",
+    "stills": "rm -rf kadry && mkdir kadry && ffmpeg -loglevel error -i meritum-film-b.mp4 -vf fps=1,scale=960:-1 -q:v 3 kadry/kadr-%02d.jpg",
+    "loudness": "ffmpeg -hide_banner -nostats -i meritum-film-b.mp4 -af ebur128=peak=true:framelog=quiet -f null - 2>&1 | grep -E 'I:|Peak:'",
+    "lint": "eslint src && tsc"
+  },
+  "allowScripts": {
+    "esbuild": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "fps": 30,
+  "bar": 60,
+  "scenes": {
+    "zdanie": 120,
+    "nazwa": 60,
+    "ciecie": 60,
+    "szukanie": 150,
+    "werdykt": 180,
+    "drugie": 120,
+    "zwrot": 180,
+    "zasada": 90,
+    "puenta": 120,
+    "plansza": 120
+  },
+  "cues": {
+    "zdanie": {"ticks": [30, 38, 45, 53, 60, 68, 75, 83, 90, 98, 105, 113]},
+    "ciecie": {"split": 15},
+    "szukanie": {"steps": [0, 8, 15, 23], "found": 60, "lock": 105},
+    "werdykt": {"verdict": 15, "mark": 30, "source": 45, "strength": 60},
+    "drugie": {"steps": [0, 4, 8, 11], "found": 20, "lock": 50, "verdict": 60},
+    "zwrot": {"ticks": [15, 23, 30, 38, 45, 53], "search": 60, "steps": [60, 64, 68, 71], "result": 90, "verdict": 105},
+    "puenta": {"line": 45}
+  }
+}
