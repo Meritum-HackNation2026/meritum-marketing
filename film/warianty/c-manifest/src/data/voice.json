@@ -1,0 +1,319 @@
+{
+ "voice": "TX3LPaxmHKxFdv7VOQHJ",
+ "model": "eleven_multilingual_v2",
+ "lines": [
+  {
+   "text": "Ktoś to napisał.",
+   "file": "audio/lektor/linia-01.wav",
+   "durationMs": 1161,
+   "words": [
+    {
+     "text": "Ktoś",
+     "startMs": 0,
+     "endMs": 279
+    },
+    {
+     "text": "to",
+     "startMs": 337,
+     "endMs": 395
+    },
+    {
+     "text": "napisał.",
+     "startMs": 441,
+     "endMs": 1057
+    }
+   ]
+  },
+  {
+   "text": "Ktoś podał dalej.",
+   "file": "audio/lektor/linia-02.wav",
+   "durationMs": 1245,
+   "words": [
+    {
+     "text": "Ktoś",
+     "startMs": 60,
+     "endMs": 293
+    },
+    {
+     "text": "podał",
+     "startMs": 351,
+     "endMs": 595
+    },
+    {
+     "text": "dalej.",
+     "startMs": 653,
+     "endMs": 1140
+    }
+   ]
+  },
+  {
+   "text": "A skąd to wiadomo?",
+   "file": "audio/lektor/linia-03.wav",
+   "durationMs": 1338,
+   "words": [
+    {
+     "text": "A",
+     "startMs": 60,
+     "endMs": 130
+    },
+    {
+     "text": "skąd",
+     "startMs": 188,
+     "endMs": 432
+    },
+    {
+     "text": "to",
+     "startMs": 490,
+     "endMs": 559
+    },
+    {
+     "text": "wiadomo?",
+     "startMs": 594,
+     "endMs": 1175
+    }
+   ]
+  },
+  {
+   "text": "Meritum sprawdza to w źródłach.",
+   "file": "audio/lektor/linia-04.wav",
+   "durationMs": 1998,
+   "words": [
+    {
+     "text": "Meritum",
+     "startMs": 60,
+     "endMs": 536
+    },
+    {
+     "text": "sprawdza",
+     "startMs": 594,
+     "endMs": 1000
+    },
+    {
+     "text": "to",
+     "startMs": 1035,
+     "endMs": 1105
+    },
+    {
+     "text": "w",
+     "startMs": 1151,
+     "endMs": 1174
+    },
+    {
+     "text": "źródłach.",
+     "startMs": 1232,
+     "endMs": 1836
+    }
+   ]
+  },
+  {
+   "text": "Każde twierdzenie dostaje osobny werdykt.",
+   "file": "audio/lektor/linia-05.wav",
+   "durationMs": 2887,
+   "words": [
+    {
+     "text": "Każde",
+     "startMs": 60,
+     "endMs": 362
+    },
+    {
+     "text": "twierdzenie",
+     "startMs": 385,
+     "endMs": 861
+    },
+    {
+     "text": "dostaje",
+     "startMs": 908,
+     "endMs": 1407
+    },
+    {
+     "text": "osobny",
+     "startMs": 1616,
+     "endMs": 2069
+    },
+    {
+     "text": "werdykt.",
+     "startMs": 2115,
+     "endMs": 2696
+    }
+   ]
+  },
+  {
+   "text": "Przy werdykcie jest cytat, słowo w słowo, i źródło.",
+   "file": "audio/lektor/linia-06.wav",
+   "durationMs": 3891,
+   "words": [
+    {
+     "text": "Przy",
+     "startMs": 60,
+     "endMs": 257
+    },
+    {
+     "text": "werdykcie",
+     "startMs": 304,
+     "endMs": 849
+    },
+    {
+     "text": "jest",
+     "startMs": 942,
+     "endMs": 1151
+    },
+    {
+     "text": "cytat,",
+     "startMs": 1221,
+     "endMs": 1778
+    },
+    {
+     "text": "słowo",
+     "startMs": 1894,
+     "endMs": 2208
+    },
+    {
+     "text": "w",
+     "startMs": 2254,
+     "endMs": 2277
+    },
+    {
+     "text": "słowo,",
+     "startMs": 2335,
+     "endMs": 2893
+    },
+    {
+     "text": "i",
+     "startMs": 3044,
+     "endMs": 3125
+    },
+    {
+     "text": "źródło.",
+     "startMs": 3195,
+     "endMs": 3729
+    }
+   ]
+  },
+  {
+   "text": "Jak nie wiemy, to nie zgadujemy.",
+   "file": "audio/lektor/linia-07.wav",
+   "durationMs": 1935,
+   "words": [
+    {
+     "text": "Jak",
+     "startMs": 60,
+     "endMs": 222
+    },
+    {
+     "text": "nie",
+     "startMs": 280,
+     "endMs": 362
+    },
+    {
+     "text": "wiemy,",
+     "startMs": 396,
+     "endMs": 791
+    },
+    {
+     "text": "to",
+     "startMs": 884,
+     "endMs": 988
+    },
+    {
+     "text": "nie",
+     "startMs": 1035,
+     "endMs": 1116
+    },
+    {
+     "text": "zgadujemy.",
+     "startMs": 1139,
+     "endMs": 1848
+    }
+   ]
+  },
+  {
+   "text": "Ten sam wynik na stronie, na Discordzie i we wtyczce.",
+   "file": "audio/lektor/linia-08.wav",
+   "durationMs": 3769,
+   "words": [
+    {
+     "text": "Ten",
+     "startMs": 60,
+     "endMs": 234
+    },
+    {
+     "text": "sam",
+     "startMs": 315,
+     "endMs": 536
+    },
+    {
+     "text": "wynik",
+     "startMs": 617,
+     "endMs": 977
+    },
+    {
+     "text": "na",
+     "startMs": 1256,
+     "endMs": 1395
+    },
+    {
+     "text": "stronie,",
+     "startMs": 1453,
+     "endMs": 1953
+    },
+    {
+     "text": "na",
+     "startMs": 2011,
+     "endMs": 2115
+    },
+    {
+     "text": "Discordzie",
+     "startMs": 2161,
+     "endMs": 2730
+    },
+    {
+     "text": "i",
+     "startMs": 2905,
+     "endMs": 2986
+    },
+    {
+     "text": "we",
+     "startMs": 3055,
+     "endMs": 3137
+    },
+    {
+     "text": "wtyczce.",
+     "startMs": 3172,
+     "endMs": 3682
+    }
+   ]
+  },
+  {
+   "text": "Meritum. Sprawdź, zanim podasz dalej.",
+   "file": "audio/lektor/linia-09.wav",
+   "durationMs": 2988,
+   "words": [
+    {
+     "text": "Meritum.",
+     "startMs": 60,
+     "endMs": 605
+    },
+    {
+     "text": "Sprawdź,",
+     "startMs": 884,
+     "endMs": 1430
+    },
+    {
+     "text": "zanim",
+     "startMs": 1604,
+     "endMs": 1882
+    },
+    {
+     "text": "podasz",
+     "startMs": 1917,
+     "endMs": 2173
+    },
+    {
+     "text": "dalej.",
+     "startMs": 2207,
+     "endMs": 2788
+    }
+   ]
+  }
+ ]
+}
