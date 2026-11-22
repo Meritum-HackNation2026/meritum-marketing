@@ -316,9 +316,9 @@ def build(art: Path, preview_dir: Path | None = None) -> None:
     d.foot()
 
     d.slide(say[8])
-    d.title("Bez zastrzeżeń spełniamy jeden cel z sześciu, trafność tylko w łagodniejszej z dwóch miar.")
-    d.text(L, 256, 1696, 40, "Przebieg 7b, 22.11.2026, 07:24 UTC: 64 twierdzenia przez API dev. 53 werdykty trafne, 11 niepotrzebnych wstrzymań, 0 błędów technicznych.", size=24, color=INK2)
-    d.pic("results", L, 318, 1696, alt="Tabela: trafność 0,82 (ściśle 0,65) przy celu 0,75; pokrycie cytatami 90% przy celu 95%; poprawność cytatów 83% przy celu 85%; wstrzymanie 100% przy celu 80%; odporność na prompt injection bez pomiaru; czas 50 s przy celu 30 s")
+    d.title("Wyniki z przebiegu 7b:\n64 twierdzenia, 53 trafne werdykty.")
+    d.text(L, 256, 1696, 40, "Przebieg z 22.11.2026, 07:24 UTC, przez API dev. Pozostałe 11 odpowiedzi to niepotrzebne wstrzymania, błędów technicznych 0.", size=24, color=INK2)
+    d.pic("results", L, 318, 1696, alt="Tabela: trafność 0,82 (ściśle 0,65) przy celu 0,75; pokrycie cytatami 90% przy celu 95%; poprawność cytatów 83% przy celu 85%; wstrzymanie 100% przy celu 80%; odporności na prompt injection nie zmierzono; czas 50 s przy celu 30 s")
     d.text(L, 900, 1010, 90, "Siedem przebiegów w jedną noc, a poprawki powstawały na tych samych 64 twierdzeniach, więc wynik może być zawyżony. Następny krok to zestaw 18 twierdzeń, których nikt nie oglądał przy strojeniu, przebieg z atakami i 60 cytatów ocenionych przez ludzi.", size=20, color=INK2, name="Dopisek")
     d.link("Pełne wyniki i wyliczenia w arkuszu", XLSX)
     d.foot()

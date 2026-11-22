@@ -207,15 +207,12 @@ p,li,td,dd{font-size:26px;line-height:1.4}
 .res .lead,.cost .lead{max-width:1696px;margin-top:20px;font-size:24px}
 .res .metrics{margin-top:32px}
 .res .metrics td{padding:8px 0}
-.metrics .val{font-size:40px !important;font-weight:700;letter-spacing:-.02em;width:190px}
-.metrics .st{font-size:22px;color:var(--ink2);font-weight:400}
-.metrics b.st{color:var(--ink);font-weight:650}
-.metrics .runs{font-size:19px;color:var(--ink2);width:250px;white-space:nowrap}
-.metrics .st{width:360px}
-.res td:first-child{width:680px}
+.metrics .val{font-size:40px !important;font-weight:700;letter-spacing:-.02em;width:330px}
+.metrics .runs{font-size:19px;color:var(--ink2);white-space:nowrap}
+.res td:first-child{width:740px}
 .res .metrics td{font-size:24px}
 .res .metrics td small{font-size:19px}
-.res .tgt{width:210px}
+.res .tgt{width:330px}
 .metrics .num{text-align:right;padding-right:56px;white-space:nowrap}
 .metrics th.num{padding-right:56px}
 .metrics .lvl{font-size:30px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;padding-right:40px}
@@ -455,21 +452,21 @@ p,li,td,dd{font-size:26px;line-height:1.4}
 
 <!-- 9 -->
 <section class="slide res">
-  <h2>Bez zastrzeżeń spełniamy jeden cel z sześciu, trafność tylko w łagodniejszej z dwóch miar.</h2>
-  <p class="lead">Przebieg 7b, 22.11.2026, 07:24 UTC: 64 twierdzenia przez API dev. 53 werdykty trafne, 11 niepotrzebnych wstrzymań, 0 błędów technicznych.</p>
+  <h2>Wyniki z przebiegu 7b:<br>64 twierdzenia, 53 trafne werdykty.</h2>
+  <p class="lead">Przebieg z 22.11.2026, 07:24 UTC, przez API dev. Pozostałe 11 odpowiedzi to niepotrzebne wstrzymania, błędów technicznych 0.</p>
   <table class="metrics">
-    <tr><th>Miernik</th><th>Cel z treści zadania</th><th>Przebieg 7b</th><th></th><th>Przebieg 0 → 7b</th></tr>
-    <tr><td>Trafność werdyktu<small>macro-F1 z raportu; z werdyktów, które system naprawdę zwrócił: 0,65</small></td><td class="tgt">≥ 0,75</td><td class="val">0,82</td><td class="st">spełniony w raporcie, ściśle nie</td><td class="runs mono">0,46 → 0,82</td></tr>
-    <tr><td>Pokrycie cytatami<small>werdykty rozstrzygające, które mają cytat</small></td><td class="tgt">≥ 95%</td><td class="val">90%</td><td class="st">cel niespełniony</td><td class="runs mono">100% → 90%</td></tr>
-    <tr><td>Poprawność cytatów<small>wymowę cytatu ocenia model-sędzia</small></td><td class="tgt">≥ 85%</td><td class="val">83%</td><td class="st">cel niespełniony</td><td class="runs mono">45% → 83%</td></tr>
-    <tr><td>Wstrzymanie bez dowodów<small>nie rozstrzygamy, gdy nie ma na czym</small></td><td class="tgt">≥ 80%</td><td class="val">100%</td><td><b class="st">cel spełniony</b></td><td class="runs mono">86% → 100%</td></tr>
-    <tr><td>Odporność na prompt injection<small>8 ataków czeka w golden secie ze 102 przypadków</small></td><td class="tgt">≥ 90%</td><td class="val">–</td><td class="st">brak pomiaru</td><td class="runs mono"></td></tr>
-    <tr><td>Czas odpowiedzi<small>mediana, 4 sprawdzenia naraz</small></td><td class="tgt">≤ 30 s</td><td class="val">50 s</td><td class="st">cel niespełniony</td><td class="runs mono">39 s → 50 s</td></tr>
+    <tr><th>Miernik</th><th>Cel z treści zadania</th><th>Przebieg 7b</th><th>Przebieg 0 → 7b</th></tr>
+    <tr><td>Trafność werdyktu<small>macro-F1 z raportu; z werdyktów, które system naprawdę zwrócił: 0,65</small></td><td class="tgt">≥ 0,75</td><td class="val">0,82</td><td class="runs mono">0,46 → 0,82</td></tr>
+    <tr><td>Pokrycie cytatami<small>werdykty rozstrzygające, które mają cytat</small></td><td class="tgt">≥ 95%</td><td class="val">90%</td><td class="runs mono">100% → 90%</td></tr>
+    <tr><td>Poprawność cytatów<small>wymowę cytatu ocenia model-sędzia</small></td><td class="tgt">≥ 85%</td><td class="val">83%</td><td class="runs mono">45% → 83%</td></tr>
+    <tr><td>Wstrzymanie bez dowodów<small>nie rozstrzygamy, gdy nie ma na czym</small></td><td class="tgt">≥ 80%</td><td class="val">100%</td><td class="runs mono">86% → 100%</td></tr>
+    <tr><td>Odporność na prompt injection<small>nie zmierzono; 8 ataków czeka w golden secie ze 102 przypadków</small></td><td class="tgt">≥ 90%</td><td class="val">–</td><td class="runs mono"></td></tr>
+    <tr><td>Czas odpowiedzi<small>mediana, 4 sprawdzenia naraz</small></td><td class="tgt">≤ 30 s</td><td class="val">50 s</td><td class="runs mono">39 s → 50 s</td></tr>
   </table>
   <p class="note">Siedem przebiegów w jedną noc, a poprawki powstawały na tych samych 64 twierdzeniach, więc wynik może być zawyżony. Następny krok to zestaw 18 twierdzeń, których nikt nie oglądał przy strojeniu, przebieg z atakami i 60 cytatów ocenionych przez ludzi.</p>
   <a class="xl" href="https://meritum-static.gburek.app/meritum-koszty-i-wyniki.xlsx"><span>Pełne wyniki i wyliczenia w arkuszu<svg class="ic"><use href="#i-arrow"/></svg></span><span class="mono">meritum-static.gburek.app/meritum-koszty-i-wyniki.xlsx</span></a>
   <div class="foot"><svg class="mark"><use href="#mark"/></svg><span class="word">meritum</span><span class="n">09 / 12</span></div>
-  <aside>Liczby pochodzą z raportów skryptu ewaluacji w repozytorium workera: siedem przebiegów benchmarku sprawdzania faktów z 22 listopada, 64 twierdzenia, przez API środowiska dev. Pokazujemy ostatni, 7b. Bez zastrzeżeń spełniamy wstrzymanie bez dowodów. Trafność w raporcie to 0,82, ale raport zalicza dozwoloną alternatywę werdyktu jako trafienie; liczona ściśle, z werdyktów, które system naprawdę zwrócił, wynosi 0,65, czyli poniżej celu. Wszystkie 11 błędów to niepotrzebne wstrzymania: system woli nie rozstrzygnąć, niż się pomylić. Pokrycie cytatami spadło do 90 procent, bo zaostrzyliśmy reguły dla cytatów, i to trzeba odrobić. Poprawność cytatów ocenia model-sędzia; poprawiony sędzia jest już w kodzie, ale pełnego przebiegu z nim nie ma, więc podajemy starą liczbę. Mediana 50 sekund to pomiar przy czterech sprawdzeniach naraz. Odporności na wstrzyknięcia nie podajemy, bo ten zestaw nie ma ataków. Poprawki powstawały na tych samych 64 twierdzeniach, dlatego następny krok to zestaw odłożony. Każda liczba ma komórkę w arkuszu pod linkiem, na karcie „Liczby na slajdach”.</aside>
+  <aside>Liczby pochodzą z raportów skryptu ewaluacji w repozytorium workera: siedem przebiegów benchmarku sprawdzania faktów z 22 listopada, 64 twierdzenia, przez API środowiska dev. Pokazujemy ostatni, 7b: 53 z 64 werdyktów są trafne. Trafność w raporcie to 0,82, ale raport zalicza dozwoloną alternatywę werdyktu jako trafienie; liczona ściśle, z werdyktów, które system naprawdę zwrócił, wynosi 0,65 przy celu 0,75. Wszystkie 11 błędów to niepotrzebne wstrzymania: system woli nie rozstrzygnąć, niż się pomylić. Pokrycie cytatami spadło do 90 procent, bo zaostrzyliśmy reguły dla cytatów, i to trzeba odrobić. Poprawność cytatów ocenia model-sędzia; poprawiony sędzia jest już w kodzie, ale pełnego przebiegu z nim nie ma, więc podajemy starą liczbę. Mediana 50 sekund to pomiar przy czterech sprawdzeniach naraz. Odporności na wstrzyknięcia nie podajemy, bo ten zestaw nie ma ataków. Poprawki powstawały na tych samych 64 twierdzeniach, dlatego następny krok to zestaw odłożony. Każda liczba ma komórkę w arkuszu pod linkiem, na karcie „Liczby na slajdach”.</aside>
 </section>
 
 <!-- 10 -->
@@ -519,7 +516,7 @@ p,li,td,dd{font-size:26px;line-height:1.4}
   </table>
   <div class="next"><svg class="ic"><use href="#i-hand-helping"/></svg><p><b>Dalej:</b> trafność liczona ściśle z 0,65 do 0,75, pokrycie cytatami z 90 do 95%, czas z 50 do 30 s i przebieg z 8 atakami. Potem pilotaż, w którym moderator zatwierdza odpowiedź przed publikacją.</p></div>
   <div class="foot"><svg class="mark"><use href="#mark"/></svg><span class="word">meritum</span><span class="credit">Zdjęcie: Kate Bezzubets, Unsplash</span><span class="n">12 / 12</span></div>
-  <aside>Każde ryzyko ma zabezpieczenie, które da się pokazać w kodzie albo w kontrakcie. Następny krok to pilotaż z zatwierdzaniem przez człowieka. O MSZ, NASK i fact-checkerach mówimy „gotowe do integracji z…”, bo współpracy jeszcze nie ma. Najpierw domykamy cele, których jeszcze nie spełniamy: trafność liczoną ściśle, pokrycie cytatami, czas i pomiar odporności na wstrzyknięcia. Zamknij zdaniem: każde ustalenie ma źródło, a gdy źródeł brak, mówimy to wprost. Przed pitchem dopisz nazwę zespołu i link do demo.</aside>
+  <aside>Każde ryzyko ma zabezpieczenie, które da się pokazać w kodzie albo w kontrakcie. Następny krok to pilotaż z zatwierdzaniem przez człowieka. O MSZ, NASK i fact-checkerach mówimy „gotowe do integracji z…”, bo współpracy jeszcze nie ma. Najpierw poprawiamy trafność liczoną ściśle, pokrycie cytatami i czas, i mierzymy odporność na wstrzyknięcia. Zamknij zdaniem: każde ustalenie ma źródło, a gdy źródeł brak, mówimy to wprost. Przed pitchem dopisz nazwę zespołu i link do demo.</aside>
 </section>
 </body>
 </html>

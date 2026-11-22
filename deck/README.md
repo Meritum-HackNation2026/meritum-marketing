@@ -25,7 +25,7 @@ Dopisek `--preview KATALOG` rysuje te same pola w tych samych miejscach w Chrome
 
 ## Zasady
 
-Każda liczba na slajdzie z wynikami pochodzi z raportów skryptu ewaluacji w `meritum-worker` (`evals/reports`) i ma komórkę w `docs/meritum-koszty-i-wyniki.xlsx`, w arkuszu „Liczby na slajdach”. Slajd pokazuje ostatni przebieg z raportem w repozytorium, także wtedy, gdy cel nie jest spełniony, a miernik bez pomiaru ma napis „brak pomiaru”. Koszty i skalowanie to szacunki i tak są podpisane, razem z założeniami.
+Każda liczba na slajdzie z wynikami pochodzi z raportów skryptu ewaluacji w `meritum-worker` (`evals/reports`) i ma komórkę w `docs/meritum-koszty-i-wyniki.xlsx`, w arkuszu „Liczby na slajdach”. Slajd pokazuje ostatni przebieg z raportem w repozytorium: cel z treści zadania i zmierzoną wartość obok siebie, bez etykiety z oceną. Miernik bez pomiaru ma kreskę i dopisek „nie zmierzono”. Koszty i skalowanie to szacunki i tak są podpisane, razem z założeniami.
 
 ## Arkusz i liczby
 

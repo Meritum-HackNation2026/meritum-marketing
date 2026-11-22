@@ -57,7 +57,7 @@ class DeckNumbersTest(unittest.TestCase):
         shown = [pl(ws[f"G{r}"].value, 2), pl(ws[f"H{r}"].value, 2), f"{pl(ws[f'J{r}'].value * 100)}%",
                  f"{pl(ws[f'K{r}'].value * 100)}%", f"{pl(ws[f'M{r}'].value * 100)}%", f"{pl(ws[f'O{r}'].value)} s"]
         self.assertEqual([v for v in shown if v not in slide], [])
-        self.assertIn("brak pomiaru", slide)  # injection resistance is not measured, the slide must say so
+        self.assertIn("nie zmierzono", slide)  # injection resistance is not measured, the slide must say so
 
     def test_decks_fit_the_contest_limit(self):
         self.assertLessEqual(len(re.findall(r'<section class="slide [a-z]', HTML)), MAX_SLIDES)
