@@ -7,6 +7,7 @@ Materiały konkursowe i promocyjne Meritum, obywatelskiego radaru dezinformacji 
 | [`deck/`](deck/) | prezentacja: PPTX (źródło) i PDF (dla jury) | PDF, najwyżej 12 slajdów |
 | [`film/`](film/) | scenariusz, link do filmu, pliki wideo w Git LFS | film pod linkiem, najwyżej 3 minuty |
 | [`social/`](social/) | grafiki do mediów społecznościowych | brak |
+| [`submission.md`](submission.md) | opis do formularza (do 4000 znaków), lista kontrolna §4 i lista rzeczy dla ludzi | opis, link do repozytorium, instrukcja uruchomienia |
 
 Treść pitchu: `design-system/KEY_SELLING_POINTS.md`. Wygląd, kolory, kroje i logo: `design-system/DESIGN_SYSTEM.md` i `design-system/presentation/README.md` (instrukcja szablonu PPTX). Pełna treść zadania i regulamin są w folderze `konkursy/` u właściciela repo.
 
@@ -15,5 +16,7 @@ Zasady:
 - Pokazujemy tylko liczby zmierzone naszym skryptem ewaluacji, z danymi do odtworzenia. Resztę podpisujemy jako przykład albo dane symulowane.
 - Podtytuł to „obywatelski radar dezinformacji”. Materiały ze starszym podtytułem („…oraz scamu”) i z przepływem zgłoszeń, kampanii i ataku botów nie idą do jury.
 - Wideo commitujemy przez Git LFS (`git lfs install` raz na komputer). Pliki PPTX i PDF zwykłym gitem.
+
+Długość opisu i zakazane frazy sprawdza `python3 -m unittest tests.test_submission`.
 
 Gałąź: tylko `main`, zmiany przez PR do `main`. Repo nie ma CI ani wdrożenia, bo nie ma kodu.
